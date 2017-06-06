@@ -11,12 +11,30 @@ Please read the full report which is included in this repository for further det
 
 ## Results
 
-Some example results from using the software.
 In short, the software segments the wind blade using the grid points, then detects and identifies the blade edges using Hough line transformation on a limited set of feature points along the blade edges to improve accuracy and efficiency.
+Some results are shown below, where the orange arrow shows the estimated heading acoording to the blade edges.
 
-![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/wind_blade_detection_sample.png)
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/normal_navigation.png)
 
-![Detection of wind blade edges, including the blade tip.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/wind_blade_detection_tip_sample.png)
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/normal_navigation_2.png)
+
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/normal_navigation_horizontal.png)
+
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/less_of_blade_2.png)
+
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/more_of_blade_2.png)
+
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/less_of_blade.png)
+
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/get_more_of_frame_manouvering_flipped.png)
+
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/get_more_of_frame_manouvering.png)
+
+![Detection of wind blade edges, including the blade tip.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/end_detected_2.png)
+
+![Detection of wind blade edges, including the blade tip.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/end_detected.png)
+
+![Detection of wind blade edges, including the blade tip.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/difficult_tip_decision.png)
 
 ## Installation
 
