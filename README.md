@@ -43,6 +43,12 @@ sudo python main.py run master
 sudo python main.py run slave
 ```
 
+* Append 'calibrate' to master to calibrate the stereo vision system. Note that this requires a 6x9 checkerboard poster, see the report for details about distortion and camera calibration.
+
+```
+sudo python main.py run master calibrate
+```
+
 * NOTE: X11 enables desktop interface in real-time through ssh, which is accessed using MobaXterm on windows or from terminal on linux.
 
 
