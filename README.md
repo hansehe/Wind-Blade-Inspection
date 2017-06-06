@@ -16,25 +16,25 @@ Some results are shown below, where the orange arrow shows the estimated heading
 
 ![alt text](ResultFigures/normal_navigation.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/normal_navigation_2.png)
+![alt text](ResultFigures/normal_navigation_2.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/normal_navigation_horizontal.png)
+![alt text](ResultFigures/normal_navigation_horizontal.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/less_of_blade_2.png)
+![alt text](ResultFigures/less_of_blade_2.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/more_of_blade_2.png)
+![alt text](ResultFigures/more_of_blade_2.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/less_of_blade.png)
+![alt text](ResultFigures/less_of_blade.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/get_more_of_frame_manouvering_flipped.png)
+![alt text](ResultFigures/get_more_of_frame_manouvering_flipped.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/get_more_of_frame_manouvering.png)
+![alt text](ResultFigures/get_more_of_frame_manouvering.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/end_detected_2.png)
+![alt text](ResultFigures/end_detected_2.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/end_detected.png)
+![alt text](ResultFigures/end_detected.png)
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/difficult_tip_decision.png)
+![alt text](ResultFigures/difficult_tip_decision.png)
 
 ## Installation
 
