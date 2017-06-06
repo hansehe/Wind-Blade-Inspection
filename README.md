@@ -9,6 +9,15 @@ Furthermore, the structured light will be utilized to efficiently compute featur
 Please read the full report which is included in this repository for further details.
 * Autonomous_Wind_Blade_Inspection_MSc_thesis.pdf
 
+## Results
+
+Some example results from using the software.
+In short, the software segments the wind blade using the grid points, then detects and identifies the blade edges using Hough line transformation on a limited set of feature points along the blade edges to improve accuracy and efficiency.
+
+![Detection of wind blade edges.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/wind_blade_detection_sample.png)
+
+![Detection of wind blade edges, including the blade tip.](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/wind_blade_detection_tip_sample.png)
+
 ## Installation
 
 The software is written in python 2.7, and depends on using two odroid-XU4, which acts as master and slave, two PtGrey Chameleon3.0 cameras and a laser with TTL functionality and a dot matrix diffraction option. Please see the 'Autonomous_Wind_Blade_Inspection_MSc_thesis.pdf' report for further hardware details and software explanations, and follow the installation steps described in 'HOWTO.txt' to install all necessities. However, the software may also be run on a local computer, although, only test samples may be runned.
