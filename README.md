@@ -7,7 +7,7 @@ This repository is a part of my MSc Masters' thesis which addresses autonomous i
 Furthermore, the structured light will be utilized to efficiently compute feature point matches from a stereo vision system. These matches will be used to conduct 3D reconstruction of the respective feature points using 2D triangulation. This will enable transformation of coordinates between the image frame and camera frame, including a real-time estimate of the distance to the blade.
 
 Please read the full report which is included in this repository for further details.
-* ![a link]{Autonomous_Wind_Blade_Inspection_MSc_thesis.pdf]
+* Autonomous_Wind_Blade_Inspection_MSc_thesis.pdf
 
 ## Results
 
