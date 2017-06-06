@@ -1,0 +1,119 @@
+{
+    "BASIC": {
+        "master_timeout": 10.0, 
+        "reset_calibration": false, 
+        "source_type": "VIDEO"
+    }, 
+    "BLOB_SCALE": {
+        "scale_calib_folder": "../WindTurbineInspection_data/calibration_samples/blob_scale_calib_samples/", 
+        "scale_calib_save_fname": "scale_param", 
+        "scale_calib_save_folder": "../WindTurbineInspection_data/calibration_saves/scale_calibration/", 
+        "scale_filtrate": true, 
+        "scale_img_type": "*"
+    }, 
+    "CALIB": {
+        "baseline": 50.0, 
+        "calib_chess_columns": 9, 
+        "calib_chess_rows": 6, 
+        "calib_img_folder_left_cam": "../WindTurbineInspection_data/calibration_samples/camera_calib_samples/left_camera/", 
+        "calib_img_folder_right_cam": "../WindTurbineInspection_data/calibration_samples/camera_calib_samples/right_camera/", 
+        "calib_img_type": "*", 
+        "calib_print_process": true, 
+        "calib_save_fname_left_cam": "left_calib_param", 
+        "calib_save_fname_right_cam": "right_calib_param", 
+        "calib_save_fname_stereo": "stereo_calib_param", 
+        "calib_save_folder": "../WindTurbineInspection_data/calibration_saves/camera_calibration/", 
+        "calib_show_imgs": false, 
+        "calib_timeout": -1, 
+        "focal_length": 8.5, 
+        "save_calib_param_to_json": true, 
+        "sensor_size": [
+            6.6, 
+            8.8
+        ]
+    }, 
+    "CAMERA": {
+        "auto_camera_config": true, 
+        "camera_triggerPin": 22, 
+        "manual_triggering": true, 
+        "n_frames": -1, 
+        "ptg_recv_frame_timeout": 1.5, 
+        "ptg_triggerOutPin": 3, 
+        "ptg_triggerPin": 2, 
+        "ptg_use_color_frames": true, 
+        "ptgrey_library": "Jordens"
+    }, 
+    "CV": {
+        "default_downsampling_divisor": 4, 
+        "desired_frame_shape": [
+            512, 
+            612
+        ], 
+        "detector_type": 0, 
+        "rho_min_diag_perc": 0.25, 
+        "rho_step_distance": null
+    }, 
+    "DATABASE": {
+        "database": "WindTurbine_CV", 
+        "draw_detected_points": false, 
+        "draw_heading": true, 
+        "draw_hough_lines": false, 
+        "draw_matches": false, 
+        "output_folder": "../WindTurbineInspection_data/samples_output/", 
+        "password": "odroid", 
+        "print_3D_points": false, 
+        "print_progress": true, 
+        "store_drawn_frames": false, 
+        "store_frames_as_images": true, 
+        "store_frames_as_video": true, 
+        "store_frames_video_fps": 1.0, 
+        "store_process_data": false, 
+        "sub_output_folder": "FINAL_TESTS/", 
+        "table_name": "", 
+        "username": "root"
+    }, 
+    "F_STEREO": {
+        "block_matching_parameter": 2.5, 
+        "use_block_matching": true, 
+        "use_brute_force": false, 
+        "use_cv2_triangulation": true, 
+        "use_triangulation": false
+    }, 
+    "IMAGE": {
+        "input_folder": "../WindTurbineInspection_data/final_test_samples/edge_detection/blade/blade/", 
+        "left_images": "left_camera/recordings/original_left_frames/", 
+        "left_sl_images": "left_camera/recordings/original_sl_left_frames/", 
+        "right_images": "right_camera/recordings/original_right_frames/", 
+        "right_sl_images": "right_camera/recordings/original_sl_right_frames/"
+    }, 
+    "LASER": {
+        "laser_triggerPin": 26
+    }, 
+    "REAL_TIME_PLOT": {
+        "real_time_plot_on": true, 
+        "save_fig_folder": "matplotlib_fig_results/", 
+        "use_interactive_mode": true, 
+        "use_matplotlib": false
+    }, 
+    "TCP": {
+        "frame_req_timeout": 10.0, 
+        "master_buffer_size": 3072, 
+        "master_ip": "localhost", 
+        "port": 1991, 
+        "print_payload_info": false, 
+        "slave_buffer_size": 256, 
+        "tcp_timeout": 10.0
+    }, 
+    "USER_INPUT": {
+        "automatic_mode": true, 
+        "key_terminate": "q", 
+        "no_termination": true
+    }, 
+    "VIDEO": {
+        "input_folder": "../WindTurbineInspection_data/final_test_samples/edge_detection/blade/blade_window/", 
+        "left_sl_video": "left_camera/recordings/original_sl_left.avi", 
+        "left_video": "left_camera/recordings/original_left.avi", 
+        "right_sl_video": "right_camera/recordings/original_sl_right.avi", 
+        "right_video": "right_camera/recordings/original_right.avi"
+    }
+}

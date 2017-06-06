@@ -77,10 +77,10 @@ class SettingsConfigured():
 		self._settings['DATABASE'] 									= {}
 		self._settings['DATABASE']['username'] 						= 'root' 					# Set to None to make user type in username at bootup
 		self._settings['DATABASE']['password'] 						= 'odroid' 					# Set to None to make user type in password at bootup
-		self._settings['DATABASE']['database'] 						= 'WindTurbine_CV' 			# Set to None to make user type in the database at bootup
+		self._settings['DATABASE']['database'] 						= 'WindBladeInspection_CV' 			# Set to None to make user type in the database at bootup
 		self._settings['DATABASE']['table_name']					= '' 						# Set to None to make user type in table name at bootup. The table will be appended with a timestamp.
-		self._settings['DATABASE']['output_folder']					= '../WindTurbineInspection_data/samples_output/' 		# Set to None to make user type in output folder at bootup
-		self._settings['DATABASE']['sub_output_folder']				= 'FINAL_TESTS/' 					# Give the output data folder additional subfolder (f.ex 'sub_folder/'). Set '' for no subfolder. Set to None to make user type in sub folder at bootup
+		self._settings['DATABASE']['output_folder']					= 'DataSamples/samples_output/' 		# Set to None to make user type in output folder at bootup
+		self._settings['DATABASE']['sub_output_folder']				= '' 					# Give the output data folder additional subfolder (f.ex 'sub_folder/'). Set '' for no subfolder. Set to None to make user type in sub folder at bootup
 		self._settings['DATABASE']['print_progress'] 				= True
 		self._settings['DATABASE']['print_3D_points'] 				= False 		# Print all 3D point values (does not save to database)
 		self._settings['DATABASE']['store_process_data'] 			= False 	# Store process data to database
@@ -94,10 +94,10 @@ class SettingsConfigured():
 		self._settings['DATABASE']['store_frames_as_images'] 		= True 	# Store fames as images (Separate folder for each frame set)
 		#---- CAMERA CALIBRATION SETTINGS ----#
 		self._settings['CALIB'] 									= {}
-		self._settings['CALIB']['calib_img_folder_left_cam'] 		= '../WindTurbineInspection_data/calibration_samples/camera_calib_samples/left_camera/'
-		self._settings['CALIB']['calib_img_folder_right_cam'] 		= '../WindTurbineInspection_data/calibration_samples/camera_calib_samples/right_camera/'
+		self._settings['CALIB']['calib_img_folder_left_cam'] 		= 'DataSamples/calibration_samples/camera_calib_samples/left_camera/'
+		self._settings['CALIB']['calib_img_folder_right_cam'] 		= 'DataSamples/calibration_samples/camera_calib_samples/right_camera/'
 		self._settings['CALIB']['calib_img_type']					= '*'
-		self._settings['CALIB']['calib_save_folder']				= '../WindTurbineInspection_data/calibration_saves/camera_calibration/'
+		self._settings['CALIB']['calib_save_folder']				= 'DataSamples/calibration_saves/camera_calibration/'
 		self._settings['CALIB']['calib_save_fname_left_cam'] 		= 'left_calib_param'
 		self._settings['CALIB']['calib_save_fname_right_cam'] 		= 'right_calib_param'
 		self._settings['CALIB']['calib_save_fname_stereo'] 			= 'stereo_calib_param'
@@ -119,9 +119,9 @@ class SettingsConfigured():
 		self._settings['F_STEREO']['use_brute_force'] 				= False 	# True/False for using brute force matching instead of FLANN based matching (only active if use_block_matching=False)
 		#---- BLOB SCALE SETTINGS -----#
 		self._settings['BLOB_SCALE'] 								= {}
-		self._settings['BLOB_SCALE']['scale_calib_folder']			= '../WindTurbineInspection_data/calibration_samples/blob_scale_calib_samples/'
+		self._settings['BLOB_SCALE']['scale_calib_folder']			= 'DataSamples/calibration_samples/blob_scale_calib_samples/'
 		self._settings['BLOB_SCALE']['scale_img_type'] 				= '*'
-		self._settings['BLOB_SCALE']['scale_calib_save_folder']		= '../WindTurbineInspection_data/calibration_saves/scale_calibration/'
+		self._settings['BLOB_SCALE']['scale_calib_save_folder']		= 'DataSamples/calibration_saves/scale_calibration/'
 		self._settings['BLOB_SCALE']['scale_calib_save_fname'] 		= 'scale_param' 
 		self._settings['BLOB_SCALE']['scale_filtrate'] 				= True
 		#---- MASTER / SLAVE TCP -----#
@@ -150,15 +150,15 @@ class SettingsConfigured():
 		self._settings['LASER']['laser_triggerPin'] 				= 26 # Trigger pin on the odroid to the laser
 		#---- VIDEO SETTINGS -----#
 		self._settings['VIDEO'] 									= {}
-		#self._settings['VIDEO']['input_folder']						= '../WindTurbineInspection_data/final_test_samples/stereopsis/dist_124cm_164cm/'
-		self._settings['VIDEO']['input_folder']						= '../WindTurbineInspection_data/final_test_samples/edge_detection/blade/blade_window/'
+		#self._settings['VIDEO']['input_folder']						= 'DataSamples/final_test_samples/stereopsis/dist_124cm_164cm/'
+		self._settings['VIDEO']['input_folder']						= 'DataSamples/final_test_samples/edge_detection/blade/blade_window/'
 		self._settings['VIDEO']['left_video']						= 'left_camera/recordings/original_left.avi' 			# Master is to the left
 		self._settings['VIDEO']['left_sl_video']					= 'left_camera/recordings/original_sl_left.avi' 
 		self._settings['VIDEO']['right_video']						= 'right_camera/recordings/original_right.avi'			# Slave is to the right
 		self._settings['VIDEO']['right_sl_video']					= 'right_camera/recordings/original_sl_right.avi'
 		#---- IMAGE SETTINGS -----#
 		self._settings['IMAGE'] 									= {}
-		self._settings['IMAGE']['input_folder']						= '../WindTurbineInspection_data/final_test_samples/edge_detection/blade/blade/'
+		self._settings['IMAGE']['input_folder']						= 'DataSamples/final_test_samples/edge_detection/blade/blade/'
 		self._settings['IMAGE']['left_images']						= 'left_camera/recordings/original_left_frames/' 			# Master is to the left (May also be list of filenames - consistent with following input images)
 		self._settings['IMAGE']['left_sl_images']					= 'left_camera/recordings/original_sl_left_frames/' 
 		self._settings['IMAGE']['right_images']						= 'right_camera/recordings/original_right_frames/'	# Slave is to the right
