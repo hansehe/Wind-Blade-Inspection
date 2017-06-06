@@ -17,9 +17,9 @@ The software is written in python 2.7, and depends on using two odroid-XU4, whic
 
 * Get information on how to use the software:
 
-'''
+```
 sudo python main.py info
-'''
+```
 
 * Run the program with stored video sample:
 
@@ -35,13 +35,13 @@ sudo python main.py run simulate image
 
 * If all hardwares are connected, then the master and slave is started by typing following in the master/slave terminal:
 
-'''
+```
 sudo python main.py run master
-'''
+```
 
-'''
+```
 sudo python main.py run slave
-'''
+```
 
 * NOTE: X11 enables desktop interface in real-time through ssh, which is accessed using MobaXterm on windows or from terminal on linux.
 
