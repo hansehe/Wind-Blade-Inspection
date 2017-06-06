@@ -1,0 +1,220 @@
+#---------------------------------------------------------------------#
+
+SETUP odroid xu4 with point grey cameleon3 camera and openCV (+openCL).
+
+Step 1 - Write ubuntu firmware to emmc hardkernel: 
+	- Use this firmware (known to work): image ubuntu-15.10-mate-odroid-xu3-20160114
+		- visit: http://odroid.in/ubuntu-15.10/
+	- unpack the file so that it terminates with .img
+	- Do not use a SD-to-MicroSD adapter! Must use a proper mircoSD usb adapter.
+	- Follow this page for a step by step guide: http://odroid.com/dokuwiki/doku.php?id=en:odroid_flashing_tools
+	Summary:
+		- On a linux computer (DO NOT USE WINDOWS!):
+			- Clear the destination media by entering dd if=/dev/zero of=/dev/sdb bs=4M
+			 - Flash your image: sudo dd if=/<path_to>/image.img of=/dev/sdb bs=4M
+			 - Enter sync before removing the media to make sure that all data is written.
+
+Step 2 - Install required packages and update distribution:
+	- Update distribution: sudo apt-get dist-upgrade
+	- General: sudo apt-get install subversion vim nano cmake python-dev python-numpy-dev libtiff5-dev
+	- matplotlib requires libfreetype6-dev: sudo apt-get install libfreetype6-dev
+	- scipy requires lapack/blas: sudo apt-get install libatlas-base-dev gfortran
+
+Step 3 - Install openCL
+	- Download open cl for arm7hf from here: http://malideveloper.arm.com/resources/sdks/mali-opencl-sdk/
+	- On the odroid decompress the tgz: tar -zxvf MaliOpenCLSDKv1100a36a7Linux.tgz
+	- In the Mali_OpenCL_SDK_v1.1.0 folder, edit platform.mk (nano platform.mk):
+		- Change CC:= .. to CC:=g++
+		- Change AR= .. to AR=ar
+		- Example:
+		#CC:=arm-none-linux-gnueabi-g++
+		#AR=arm-none-linux-gnueabi-ar
+		CC:=g++
+		AR=ar
+	- Make the openCL package:
+		-> cd samples/64_bit_integer
+		-> make
+		-> ./64_bit_integer
+
+step 4 - Install openCV
+	- build essentials and requirements
+	 	-> sudo apt-get install build-essential
+	 	-> sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+	 	-> sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+	 	- Download openCV. May have to download using a normal computer if odroid starts acting up during download.
+	 	-> git clone https://github.com/Itseez/opencv.git
+	 	-> cd opencv
+	 	-> git checkout <latest version, f.ex: 3.2.0 and above, must be used>
+	 	- (Version 3.2.0 will only work with SIFT/SURF if the 'ximgproc' package in opencv_contrib/modules/ is removed.)
+	 	-> cd ..
+	 	-> git clone https://github.com/Itseez/opencv_contrib.git
+	 	-> cd opencv_contrib
+	 	-> git checkout <latest version (f.ex: 3.2.0) - and the same version as for opencv must be checked out!>
+	 	-> cd ..
+	 	- Install openCV
+	 	-> cd opencv
+	 	-> mkdir build
+	 	-> cd build
+	 	-> cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules -D BUILD_EXAMPLES=ON ..
+	 	-> make -j1
+	 	-> sudo make install
+	 	-> sudo ldconfig
+ 	- test openCV with python: import cv2
+ 	- test openCV with openCL support: ./bin/opencv_perf_core
+ 		- "Mali" should be present in output
+
+step 5 - Expand PtGrey sdk
+	-> mkdir PtGrey
+	-> mkdir PtGrey/sdk
+	- Update the boot.ini file: sudo nano /media/boot/boot.ini
+		- Add line to bootargs toward the end: usbcore.usbfs_memory_mb=1000
+			- Replace This line: setenv bootargs "${bootrootfs} ${videoconfig} smsc95xx.macaddr=${macaddr} governor=${governor} ${hdmi_phy_control}"
+			- With this: setenv bootargs "${bootrootfs} ${videoconfig} smsc95xx.macaddr=${macaddr} governor=${governor} ${hdmi_phy_control} usbcore.usbfs_memory_mb=1000"
+	- Download Flycapture2 SDK newest version:
+		- For ubuntu odroid 16.04: flycapture.2.11.3.121_armhf
+		- Extract if necessary: tar -zxvf flycapture.*.armhf.tar.gz
+ 	- Copy the PtGrey folder to the odroid
+ 	- Retrieve dependencies: sudo apt-get install libraw1394-11 libgtkmm-2.4-1v5 libglademm-2.4-1v5 libusb-1.0-0 libglademm-2.4-dev
+ 	-> cd PtGrey/sdk/flycapture.*.armhf
+ 	- Copy all libraries to system folders:
+ 		-> cd lib/
+ 		-> sudo cp libflycapture* /usr/lib
+ 		-> cd ..
+	- Configure flcap2-conf script: sudo sh flycap2-conf
+ 	- flycap2-conf will ask for a username. Type in the odroid username: odroid
+ 	- Say yes to everything.
+ 	-> sudo reboot
+ 	-> cd PtGrey/sdk/flycapture.*.armhf/bin
+ 	-> export LD_LIBRARY_PATH=./../lib
+ 	-> cd ../lib/
+ 	-> sudo cp -P * C/* /usr/lib/
+ 	- Step back to PtGrey folder: cd ../../..
+ 	- Download pyflycapture2 from github:
+ 		-> git clone https://github.com/peterpolidoro/pyflycapture2.git
+ 		-> cd pyflycapture2*
+ 	- Install dependencies:
+ 		-> pip install cython
+ 		-> sudo apt-get install ipython -y
+ 	- Install pyflycapture2 python wrapper for flycapture2 sdk:
+ 		- Update setup.py to work with armhf:
+ 			-> nano setup.py
+ 			- Edit line 38 (Set pointgrey_win to the flycapture*armhf folder):
+ 				-> pointgrey_win = "../sdk/flycapture.2.11.3.121_armhf"
+ 			- Edit line 70 (Set first index of include_dirs to the flycapture*armhf/include/C folder)
+ 				-> include_dirs = ["../sdk/flycapture.2.11.3.121_armhf/include/C", 
+ 		-> sudo python setup.py install
+ 	- Plug in point grey camera in USB3 and do a test (some functions in the pyflycapture2 does not work, comment them out).
+ 	-> python test_flycapture2.py
+
+step 6 - Install mysql
+	- Install mysql-server:
+ 		- Download newest mysql package from dev.mysql.com/downloads (called mysql-apt-config_X.X.X-X_all.deb)
+ 		- Install mysql config using downloaded package: sudo dpkg -i /PATH/version-specific-package-name.deb
+ 		- Choose latest mysql version (5.7 and up)
+ 		- Update system: sudo apt-get update
+ 		- Install mysql server: sudo apt-get install mysql-server
+ 		- Install mysqldb for python: sudo apt-get install python-mysqldb
+ 			- Or using pip (Does not work on odroid): sudo pip install MySQL-python
+ 	- Start mysql server: sudo service mysql start 
+ 	- Stop mysql server: sudo service mysql stop
+ 	- Status mysql server: sudo service mysql status 
+ 	- manual login to mysql: mysql -u root -p
+ 		- Where root is username, and password where set when mysql was installed
+ 	- Uninstall mysql (might be useful for a reinstallation..):
+ 		-> sudo apt-get purge mysql*
+ 		-> sudo apt-get autoremove
+ 		-> sudo apt-get autoclean
+
+ step 7 - Set static IP address (must be done for both odroids):
+ 	-> ifconfig
+ 		- Note down the current IP address (when connected to a router) and ethernet name (f.ex eth0 or a random name such as enx001e06301bd8)
+ 	->  sudo netstat -nr 
+ 		- Note down gateway address
+ 	-> sudo nano /etc/NetworkManager/NetworkManager.conf
+ 		- Change this line: 
+ 			[ifupdown]
+ 			managed=false
+ 		- To this:
+ 			[ifupdown]
+			managed=true
+	-> sudo nano /etc/network/interfaces
+		- Add these lines with preferred IP address (replace xxx.xxx.xxx.xxx):
+			auto lo eth0
+			iface lo inet loopback
+			iface eth0 inet static
+    			address xxx.xxx.xxx.xxx 
+			    netmask xxx.xxx.xxx.xxx
+			    broadcast xxx.xxx.xxx.xxx
+			    gateway xxx.xxx.xxx.xxx 
+			    dns-nameservers 8.8.8.8
+    -> sudo reboot
+    - Test connection by typing:
+    	-> ping <IP address>
+
+ step 8 - Install wiring library for the odroid (with python compatability):
+ 	- Steps are taken from: 
+ 		- http://odroid.com/dokuwiki/doku.php?id=en:c1_tinkering
+ 	- Get the wiringPi library compatible ODROID:
+ 		-> git clone https://github.com/hardkernel/wiringPi
+ 	- Build the library:
+ 		-> cd wiringPi
+ 		-> ./build
+ 	- Install python dependencies:
+ 		-> sudo apt-get install python-dev python-setuptools swig3.0
+ 	- Get/setup WiringPi 2 for Python repository:
+ 		-> git clone https://github.com/hardkernel/WiringPi2-Python.git
+ 		-> cd WiringPi2-Python
+ 		-> git submodule init
+ 		-> git submodule update
+ 	- Build and install:
+ 		-> swig3.0 -python -threads wiringpi.i
+ 		-> sudo python setup.py build install
+ 	- See GPIO pin mapping for WiringPi:
+ 		- http://odroid.com/dokuwiki/doku.php?id=en:xu3_hardware_gpio
+ 		- The GPIO pins are located on pin section CON10
+ 	- Get/Run the example source code (optional):
+ 		-> wget http://dn.odroid.com/source_peripherals/ctinkeringkit/example-led.py
+ 		-> sudo python example-led.py
+
+ step 9 - Install pyqtgraph for real-time plotting:
+ 	-> sudo apt-get install python-pyqtgraph
+
+#---------------------------------------------------------------------#
+
+#-------------------------- USEFUL TIPS -----------------------------#
+
+Run script in background:
+	nohup python -u main.py &> output.txt &
+kill running script:
+	top
+	pgrep -lf python
+	kill -9 PID_number
+
+run matplotlib without display:
+	- Find the configuration file for matplotlib in python:
+		import matplotlib
+		matplotlib.matplotlib_fname()
+	- Change the 'backend' to Agg
+
+export display from Odroid (remote host using ssh):
+	On the Odroid (remote host):
+		Install dependency:
+			-> sudo apt-get install python-gi-cairo
+		Edit /etc/ssh/sshd_config:
+			-> sudo nano /etc/ssh/sshd_config
+		Make sure these variables are set as following:
+			-> X11Forwarding yes
+			-> X11DisplayOffset 10
+	Working on windows:
+		- Install MobaXterm on Windows
+			-> http://mobaxterm.mobatek.net/download.html
+		- Start new ssh session:
+			-> Session->SSH
+			- Make sure X11-Forwarding is checked:
+				-> Advanced SSH Settings
+	Working on linux:
+		- Login with ssh and X11:
+			-> sudo ssh -X <IP-address>
+
+
+#---------------------------------------------------------------------#
