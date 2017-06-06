@@ -14,7 +14,7 @@ Please read the full report which is included in this repository for further det
 In short, the software segments the wind blade using the grid points, then detects and identifies the blade edges using Hough line transformation on a limited set of feature points along the blade edges to improve accuracy and efficiency.
 Some results are shown below, where the orange arrow shows the estimated heading acoording to the blade edges.
 
-![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/normal_navigation.png)
+![alt text](ResultFigures/normal_navigation.png)
 
 ![alt text](https://github.com/hansehe/Wind-Blade-Inspection/ResultFigures/normal_navigation_2.png)
 
