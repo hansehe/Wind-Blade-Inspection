@@ -51,7 +51,7 @@ The software is written in python 2.7, and depends on using two odroid-XU4, whic
 sudo python main.py info
 ```
 
-* Run the program with master and slave in separate terminals by typing follow in the master/slave terminal:
+* Run the program with master and slave in separate terminals by typing following in the master/slave terminal:
 
 ```
 sudo python main.py run master
