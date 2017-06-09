@@ -1,0 +1,1298 @@
+#----------------- DRONEVISION STARTING -----------------#
+# Hardware source: 		 CAMERA
+# Output folder:
+# 	../WindTurbineInspection_data/samples_output/FINAL_TESTS/2016_02_11__17_05_20/left_camera/
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 2.90 sec
+# Processed frames: 		 1
+# Frame processing delay: 	 2.90 sec
+# Average delay per frame: 	 2.90 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 5.21 sec
+# Processed frames: 		 2
+# Frame processing delay: 	 2.31 sec
+# Average delay per frame: 	 2.61 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 7.52 sec
+# Processed frames: 		 3
+# Frame processing delay: 	 2.31 sec
+# Average delay per frame: 	 2.51 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 9.83 sec
+# Processed frames: 		 4
+# Frame processing delay: 	 2.31 sec
+# Average delay per frame: 	 2.46 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 12.14 sec
+# Processed frames: 		 5
+# Frame processing delay: 	 2.31 sec
+# Average delay per frame: 	 2.43 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 14.46 sec
+# Processed frames: 		 6
+# Frame processing delay: 	 2.31 sec
+# Average delay per frame: 	 2.41 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 16.75 sec
+# Processed frames: 		 7
+# Frame processing delay: 	 2.29 sec
+# Average delay per frame: 	 2.39 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 19.05 sec
+# Processed frames: 		 8
+# Frame processing delay: 	 2.31 sec
+# Average delay per frame: 	 2.38 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 22.18 sec
+# Processed frames: 		 9
+# Frame processing delay: 	 3.12 sec
+# Average delay per frame: 	 2.46 sec
+# Process data:
+# 	 - Y_average: 	 568.612878008
+# 	 - X_average: 	 2013.41431918
+# 	 - Z_average: 	 5304.25198041
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 1643.68978466
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 25.31 sec
+# Processed frames: 		 10
+# Frame processing delay: 	 3.13 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 566.138374156
+# 	 - X_average: 	 1291.19820626
+# 	 - Z_average: 	 3583.65532438
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 913.383396488
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 27.83 sec
+# Processed frames: 		 11
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 330.59187554
+# 	 - X_average: 	 775.961094964
+# 	 - Z_average: 	 2210.82174294
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 311.058046256
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 30.41 sec
+# Processed frames: 		 12
+# Frame processing delay: 	 2.57 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 378.077642311
+# 	 - X_average: 	 955.727805087
+# 	 - Z_average: 	 2691.2104336
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.13046899763
+# 	 - Z_std: 	 498.487603937
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 32.94 sec
+# Processed frames: 		 13
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 444.033885802
+# 	 - X_average: 	 1280.07708535
+# 	 - Z_average: 	 3560.42741978
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 764.161385536
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 35.49 sec
+# Processed frames: 		 14
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 319.34945347
+# 	 - X_average: 	 857.161728075
+# 	 - Z_average: 	 2594.90533604
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.16101225954
+# 	 - Z_std: 	 498.824893585
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 38.06 sec
+# Processed frames: 		 15
+# Frame processing delay: 	 2.57 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 569.227462873
+# 	 - X_average: 	 2585.47954041
+# 	 - Z_average: 	 7195.68206458
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.800576481337
+# 	 - Z_std: 	 5537.77427124
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 40.57 sec
+# Processed frames: 		 16
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 325.641328352
+# 	 - X_average: 	 1429.95459443
+# 	 - Z_average: 	 4061.55761383
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.794698348786
+# 	 - Z_std: 	 1008.68568732
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 43.14 sec
+# Processed frames: 		 17
+# Frame processing delay: 	 2.57 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 952.840560385
+# 	 - X_average: 	 5453.52076545
+# 	 - Z_average: 	 14918.2088919
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.818868530185
+# 	 - Z_std: 	 46846.5652018
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 45.76 sec
+# Processed frames: 		 18
+# Frame processing delay: 	 2.62 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 211.498400254
+# 	 - X_average: 	 819.81358852
+# 	 - Z_average: 	 2452.78188494
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.15228561328
+# 	 - Z_std: 	 478.706822323
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 48.30 sec
+# Processed frames: 		 19
+# Frame processing delay: 	 2.54 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 1363.89718362
+# 	 - X_average: 	 4008.58844046
+# 	 - Z_average: 	 10885.0469908
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.14355896702
+# 	 - Z_std: 	 10282.514527
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 50.82 sec
+# Processed frames: 		 20
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 397.356710055
+# 	 - X_average: 	 1339.70098614
+# 	 - Z_average: 	 4259.58153455
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.16537558267
+# 	 - Z_std: 	 5178.51371368
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 53.33 sec
+# Processed frames: 		 21
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 1030.9415481
+# 	 - X_average: 	 2573.58089668
+# 	 - Z_average: 	 7561.68555754
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.17846555206
+# 	 - Z_std: 	 9179.89373846
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 55.86 sec
+# Processed frames: 		 22
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 1626.5449265
+# 	 - X_average: 	 5193.55900929
+# 	 - Z_average: 	 13948.2830208
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.17846555206
+# 	 - Z_std: 	 20249.7307043
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 58.41 sec
+# Processed frames: 		 23
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 1097.81551818
+# 	 - X_average: 	 5138.5639017
+# 	 - Z_average: 	 12824.7685646
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -1.1335847458
+# 	 - Z_std: 	 10229.0080505
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 60.95 sec
+# Processed frames: 		 24
+# Frame processing delay: 	 2.54 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 703.144790019
+# 	 - X_average: 	 2845.9555546
+# 	 - Z_average: 	 7722.26547006
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 5794.42492716
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 63.47 sec
+# Processed frames: 		 25
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 1562.76826679
+# 	 - X_average: 	 4836.29899211
+# 	 - Z_average: 	 12105.9170664
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.15228561328
+# 	 - Z_std: 	 3258.34477841
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 66.25 sec
+# Processed frames: 		 26
+# Frame processing delay: 	 2.78 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 661.132711141
+# 	 - X_average: 	 2041.10393349
+# 	 - Z_average: 	 5962.85582012
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.07374579694
+# 	 - Z_std: 	 2237.26712752
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 68.78 sec
+# Processed frames: 		 27
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 505.909284059
+# 	 - X_average: 	 1657.03108048
+# 	 - Z_average: 	 4612.45017319
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.09992573572
+# 	 - Z_std: 	 1180.88008096
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 71.28 sec
+# Processed frames: 		 28
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 158.038815094
+# 	 - X_average: 	 597.977227218
+# 	 - Z_average: 	 1903.99355798
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.14355896702
+# 	 - Z_std: 	 242.321889746
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 73.79 sec
+# Processed frames: 		 29
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 278.829280245
+# 	 - X_average: 	 718.877953304
+# 	 - Z_average: 	 3258.78231303
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -1.02643605387
+# 	 - Z_std: 	 5796.20215924
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 76.29 sec
+# Processed frames: 		 30
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 868.552638449
+# 	 - X_average: 	 2021.02076823
+# 	 - Z_average: 	 8769.08180706
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.976648225435
+# 	 - Z_std: 	 15573.0173154
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 78.80 sec
+# Processed frames: 		 31
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 241.26743168
+# 	 - X_average: 	 774.572012632
+# 	 - Z_average: 	 2484.90072733
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -1.1355985339
+# 	 - Z_std: 	 625.750198027
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 81.29 sec
+# Processed frames: 		 32
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 569.182140779
+# 	 - X_average: 	 1931.28502909
+# 	 - Z_average: 	 5801.96037774
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.10428905885
+# 	 - Z_std: 	 3489.00676526
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 83.78 sec
+# Processed frames: 		 33
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 1278.17552545
+# 	 - X_average: 	 3169.56772971
+# 	 - Z_average: 	 10435.395508
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 11199.3721189
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 86.25 sec
+# Processed frames: 		 34
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 347.155973974
+# 	 - X_average: 	 801.688934785
+# 	 - Z_average: 	 2700.7781259
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 4397.79570699
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 88.75 sec
+# Processed frames: 		 35
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 235.865831833
+# 	 - X_average: 	 527.993234603
+# 	 - Z_average: 	 2082.73008041
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 1830.69871416
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 91.23 sec
+# Processed frames: 		 36
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 188.610137043
+# 	 - X_average: 	 424.971571229
+# 	 - Z_average: 	 1245.70424784
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 40.6265315998
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 93.71 sec
+# Processed frames: 		 37
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 201.885913084
+# 	 - X_average: 	 604.832620028
+# 	 - Z_average: 	 1832.21563418
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 1359.76348616
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 96.19 sec
+# Processed frames: 		 38
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 1283.08486726
+# 	 - X_average: 	 4800.45466166
+# 	 - Z_average: 	 14037.8173369
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 30832.3621825
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 98.67 sec
+# Processed frames: 		 39
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 1084.01693215
+# 	 - X_average: 	 3111.37187825
+# 	 - Z_average: 	 8589.51794347
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 9391.28747818
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 101.11 sec
+# Processed frames: 		 40
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 1368.34207922
+# 	 - X_average: 	 4158.03860419
+# 	 - Z_average: 	 10584.7279697
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 9114.62761604
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 103.55 sec
+# Processed frames: 		 41
+# Frame processing delay: 	 2.45 sec
+# Average delay per frame: 	 2.53 sec
+# Process data:
+# 	 - Y_average: 	 3038.56221436
+# 	 - X_average: 	 8563.29729253
+# 	 - Z_average: 	 20980.1704886
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -4.34110023906
+# 	 - Z_std: 	 22602.1324871
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 105.99 sec
+# Processed frames: 		 42
+# Frame processing delay: 	 2.43 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 1166.72145298
+# 	 - X_average: 	 2880.92985699
+# 	 - Z_average: 	 8152.13244088
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 7901.94573951
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 108.43 sec
+# Processed frames: 		 43
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 729.572531617
+# 	 - X_average: 	 1616.26426858
+# 	 - Z_average: 	 4805.25447042
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 4707.05129337
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 110.86 sec
+# Processed frames: 		 44
+# Frame processing delay: 	 2.42 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 1061.03083174
+# 	 - X_average: 	 2799.2649814
+# 	 - Z_average: 	 7475.9182676
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 9038.37346292
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 113.28 sec
+# Processed frames: 		 45
+# Frame processing delay: 	 2.42 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 1304.18859704
+# 	 - X_average: 	 3190.40764136
+# 	 - Z_average: 	 8691.51023435
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 9158.36150981
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 115.71 sec
+# Processed frames: 		 46
+# Frame processing delay: 	 2.43 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 893.526341208
+# 	 - X_average: 	 2037.59580622
+# 	 - Z_average: 	 5883.74265281
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 5719.63875975
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 118.15 sec
+# Processed frames: 		 47
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 2102.80097609
+# 	 - X_average: 	 5007.3220285
+# 	 - Z_average: 	 12770.5269989
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 14309.9708695
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 120.58 sec
+# Processed frames: 		 48
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 583.356384039
+# 	 - X_average: 	 1377.509773
+# 	 - Z_average: 	 4252.7559773
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 4112.58841017
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 123.01 sec
+# Processed frames: 		 49
+# Frame processing delay: 	 2.42 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 982.308930171
+# 	 - X_average: 	 2422.38120533
+# 	 - Z_average: 	 6820.61576191
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 6586.2325771
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 125.44 sec
+# Processed frames: 		 50
+# Frame processing delay: 	 2.43 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 843.502373837
+# 	 - X_average: 	 1875.44143375
+# 	 - Z_average: 	 5403.82964519
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 6063.48111939
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 127.89 sec
+# Processed frames: 		 51
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 173.373858924
+# 	 - X_average: 	 489.760949993
+# 	 - Z_average: 	 1208.90486545
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 123.301702024
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 130.29 sec
+# Processed frames: 		 52
+# Frame processing delay: 	 2.40 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 222.061359008
+# 	 - X_average: 	 601.465094018
+# 	 - Z_average: 	 1367.71675879
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 44.2329726383
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 132.74 sec
+# Processed frames: 		 53
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 165.007715706
+# 	 - X_average: 	 403.139162695
+# 	 - Z_average: 	 1223.86154922
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 0.0
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 135.29 sec
+# Processed frames: 		 54
+# Frame processing delay: 	 2.56 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 195.115980042
+# 	 - X_average: 	 524.418211615
+# 	 - Z_average: 	 1313.4303058
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 63.5370958059
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 137.80 sec
+# Processed frames: 		 55
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 200.509937271
+# 	 - X_average: 	 503.912920424
+# 	 - Z_average: 	 1317.39830588
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 135.036346723
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 140.24 sec
+# Processed frames: 		 56
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 197.485014023
+# 	 - X_average: 	 500.273437917
+# 	 - Z_average: 	 1272.8650636
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 46.2557993843
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 142.68 sec
+# Processed frames: 		 57
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 217.467206757
+# 	 - X_average: 	 461.530341582
+# 	 - Z_average: 	 1252.33838785
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 151.409064997
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 145.10 sec
+# Processed frames: 		 58
+# Frame processing delay: 	 2.41 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 209.831887229
+# 	 - X_average: 	 552.588229119
+# 	 - Z_average: 	 1338.29176541
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 66.2327065434
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 147.55 sec
+# Processed frames: 		 59
+# Frame processing delay: 	 2.45 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 387.912937914
+# 	 - X_average: 	 657.679267211
+# 	 - Z_average: 	 2376.2610194
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 2049.62461481
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 150.00 sec
+# Processed frames: 		 60
+# Frame processing delay: 	 2.45 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 958.214809309
+# 	 - X_average: 	 2876.6078528
+# 	 - Z_average: 	 6949.969382
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 1726.03300519
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 152.54 sec
+# Processed frames: 		 61
+# Frame processing delay: 	 2.54 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 476.020131098
+# 	 - X_average: 	 1762.88329428
+# 	 - Z_average: 	 5308.67216624
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.816022210063
+# 	 - Z_std: 	 2754.76486631
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 155.06 sec
+# Processed frames: 		 62
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 463.634570253
+# 	 - X_average: 	 1947.80405659
+# 	 - Z_average: 	 5230.45926538
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.699075858296
+# 	 - Z_std: 	 3358.74008236
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 157.62 sec
+# Processed frames: 		 63
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 348.063453452
+# 	 - X_average: 	 1424.23758442
+# 	 - Z_average: 	 4209.59521641
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.732569414558
+# 	 - Z_std: 	 1907.51405069
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 160.14 sec
+# Processed frames: 		 64
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 433.470281319
+# 	 - X_average: 	 1087.1560696
+# 	 - Z_average: 	 4645.44004129
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.889848621105
+# 	 - Z_std: 	 5538.26382876
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 162.61 sec
+# Processed frames: 		 65
+# Frame processing delay: 	 2.47 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 334.087888129
+# 	 - X_average: 	 1134.25826056
+# 	 - Z_average: 	 3424.81702249
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 1005.62634569
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 165.10 sec
+# Processed frames: 		 66
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 2225.36355271
+# 	 - X_average: 	 6784.30414165
+# 	 - Z_average: 	 18965.7920831
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.18719219832
+# 	 - Z_std: 	 30622.62748
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 167.60 sec
+# Processed frames: 		 67
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 1572.3452767
+# 	 - X_average: 	 5915.082647
+# 	 - Z_average: 	 15532.5009069
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.17846555206
+# 	 - Z_std: 	 16927.545208
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 170.07 sec
+# Processed frames: 		 68
+# Frame processing delay: 	 2.46 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 1008.05414478
+# 	 - X_average: 	 3061.12796177
+# 	 - Z_average: 	 8553.91719321
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.19591884458
+# 	 - Z_std: 	 7299.50793444
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 172.58 sec
+# Processed frames: 		 69
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 778.07397191
+# 	 - X_average: 	 2333.54172742
+# 	 - Z_average: 	 6801.24600111
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.19591884458
+# 	 - Z_std: 	 4496.92787331
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 175.08 sec
+# Processed frames: 		 70
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 298.985251403
+# 	 - X_average: 	 1042.38778961
+# 	 - Z_average: 	 3329.12512562
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 1067.20216645
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 177.60 sec
+# Processed frames: 		 71
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 224.252082649
+# 	 - X_average: 	 773.946680028
+# 	 - Z_average: 	 2586.1254251
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 581.597340564
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 180.14 sec
+# Processed frames: 		 72
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 218.002848296
+# 	 - X_average: 	 672.130595303
+# 	 - Z_average: 	 2321.99056728
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -1.12572438178
+# 	 - Z_std: 	 462.793960566
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 182.65 sec
+# Processed frames: 		 73
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 145.00519143
+# 	 - X_average: 	 523.519856451
+# 	 - Z_average: 	 1763.95138591
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -4.30764331057
+# 	 - Z_std: 	 345.169078857
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 185.18 sec
+# Processed frames: 		 74
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 187.907286977
+# 	 - X_average: 	 566.900907782
+# 	 - Z_average: 	 1741.33340326
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.17846555206
+# 	 - Z_std: 	 278.17339184
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 187.69 sec
+# Processed frames: 		 75
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 261.096577288
+# 	 - X_average: 	 572.942095991
+# 	 - Z_average: 	 1974.1214307
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.09119908946
+# 	 - Z_std: 	 1673.45788594
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 190.20 sec
+# Processed frames: 		 76
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 219.834618562
+# 	 - X_average: 	 639.212513933
+# 	 - Z_average: 	 1817.09559681
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.05629250442
+# 	 - Z_std: 	 401.699867276
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 192.73 sec
+# Processed frames: 		 77
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 213.430148238
+# 	 - X_average: 	 598.327247457
+# 	 - Z_average: 	 1699.86661465
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 6.05629250442
+# 	 - Z_std: 	 366.092672788
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 195.26 sec
+# Processed frames: 		 78
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 234.30450167
+# 	 - X_average: 	 695.087407722
+# 	 - Z_average: 	 2519.15781592
+# 	 - rho: 	 93.6916485072
+# 	 - theta: 	 -0.815854757087
+# 	 - Z_std: 	 2318.71755225
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 197.77 sec
+# Processed frames: 		 79
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 284.350916202
+# 	 - X_average: 	 654.680724823
+# 	 - Z_average: 	 1843.66429007
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 676.782124253
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 200.31 sec
+# Processed frames: 		 80
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 204.377393598
+# 	 - X_average: 	 279.988275076
+# 	 - Z_average: 	 1360.27729736
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 89.4359346541
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 202.86 sec
+# Processed frames: 		 81
+# Frame processing delay: 	 2.56 sec
+# Average delay per frame: 	 2.50 sec
+# Process data:
+# 	 - Y_average: 	 156.270854616
+# 	 - X_average: 	 294.930198493
+# 	 - Z_average: 	 1279.42820455
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 57.9429687681
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 205.42 sec
+# Processed frames: 		 82
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 1078.42326533
+# 	 - X_average: 	 1459.79255147
+# 	 - Z_average: 	 8697.33547286
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 11173.2534811
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 208.05 sec
+# Processed frames: 		 83
+# Frame processing delay: 	 2.63 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 549.628515452
+# 	 - X_average: 	 386.543361503
+# 	 - Z_average: 	 2194.31236053
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 2878.52706475
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 211.05 sec
+# Processed frames: 		 84
+# Frame processing delay: 	 3.01 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 2026.5551433
+# 	 - X_average: 	 1317.14887753
+# 	 - Z_average: 	 7410.41375151
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 1214.17573123
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 213.61 sec
+# Processed frames: 		 85
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 1315.23257365
+# 	 - X_average: 	 1184.4989658
+# 	 - Z_average: 	 6861.613649
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 942.546330676
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 216.19 sec
+# Processed frames: 		 86
+# Frame processing delay: 	 2.58 sec
+# Average delay per frame: 	 2.51 sec
+# Process data:
+# 	 - Y_average: 	 634.610612076
+# 	 - X_average: 	 898.384716004
+# 	 - Z_average: 	 4323.02930059
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 416.528288113
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 219.57 sec
+# Processed frames: 		 87
+# Frame processing delay: 	 3.38 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 392.228581078
+# 	 - X_average: 	 741.612905548
+# 	 - Z_average: 	 3466.34043147
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 97.9683171338
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 222.12 sec
+# Processed frames: 		 88
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 486.781725205
+# 	 - X_average: 	 1051.99941325
+# 	 - Z_average: 	 3923.17710442
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 372.505555998
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 224.68 sec
+# Processed frames: 		 89
+# Frame processing delay: 	 2.56 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 551.876740938
+# 	 - X_average: 	 936.069028311
+# 	 - Z_average: 	 3679.04272371
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 373.401599022
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 227.20 sec
+# Processed frames: 		 90
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.52 sec
+# Process data:
+# 	 - Y_average: 	 326.258716383
+# 	 - X_average: 	 836.599873667
+# 	 - Z_average: 	 4273.10198315
+# 	 - Z_std: 	 751.332783351
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 231.37 sec
+# Processed frames: 		 91
+# Frame processing delay: 	 4.17 sec
+# Average delay per frame: 	 2.54 sec
+# Process data:
+# 	 - Y_average: 	 354.994006329
+# 	 - X_average: 	 948.968118819
+# 	 - Z_average: 	 4298.55595022
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 799.628645786
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 234.20 sec
+# Processed frames: 		 92
+# Frame processing delay: 	 2.82 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 801.280015516
+# 	 - X_average: 	 1813.4222168
+# 	 - Z_average: 	 7647.28454304
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 5924.48777158
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 236.73 sec
+# Processed frames: 		 93
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 164.118193793
+# 	 - X_average: 	 450.087053557
+# 	 - Z_average: 	 1518.55609688
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 200.281333892
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 239.89 sec
+# Processed frames: 		 94
+# Frame processing delay: 	 3.15 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 215.446691222
+# 	 - X_average: 	 591.495657602
+# 	 - Z_average: 	 1887.75872113
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 280.068144642
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 242.40 sec
+# Processed frames: 		 95
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 463.197841989
+# 	 - X_average: 	 1331.62725581
+# 	 - Z_average: 	 3988.40522572
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 617.06671686
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 244.93 sec
+# Processed frames: 		 96
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 563.497087115
+# 	 - X_average: 	 1428.54172435
+# 	 - Z_average: 	 4409.92862298
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 999.906971466
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 247.45 sec
+# Processed frames: 		 97
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 526.91467996
+# 	 - X_average: 	 936.069241313
+# 	 - Z_average: 	 3362.57437172
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 392.086905368
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 249.99 sec
+# Processed frames: 		 98
+# Frame processing delay: 	 2.54 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 413.723531726
+# 	 - X_average: 	 957.53380171
+# 	 - Z_average: 	 3152.27164704
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 314.808815149
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 252.50 sec
+# Processed frames: 		 99
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 449.913018601
+# 	 - X_average: 	 1047.34871415
+# 	 - Z_average: 	 3130.39764309
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 495.420418006
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 255.02 sec
+# Processed frames: 		 100
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 1069.07981596
+# 	 - X_average: 	 2991.92782164
+# 	 - Z_average: 	 8122.58233893
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 2097.01519345
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 257.52 sec
+# Processed frames: 		 101
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.55 sec
+# Process data:
+# 	 - Y_average: 	 783.744605593
+# 	 - X_average: 	 1666.16368089
+# 	 - Z_average: 	 4558.5668802
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 4321.09064375
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 261.14 sec
+# Processed frames: 		 102
+# Frame processing delay: 	 3.62 sec
+# Average delay per frame: 	 2.56 sec
+# Process data:
+# 	 - Y_average: 	 1397.34693135
+# 	 - X_average: 	 3378.13467738
+# 	 - Z_average: 	 9219.53924712
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 2205.66264577
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 263.65 sec
+# Processed frames: 		 103
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.56 sec
+# Process data:
+# 	 - Y_average: 	 246.916773925
+# 	 - X_average: 	 728.982513267
+# 	 - Z_average: 	 1861.76498089
+# 	 - rho: 	 0.0
+# 	 - theta: 	 0.0
+# 	 - Z_std: 	 186.678928566
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 265.99 sec
+# Processed frames: 		 104
+# Frame processing delay: 	 2.34 sec
+# Average delay per frame: 	 2.56 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 268.23 sec
+# Processed frames: 		 105
+# Frame processing delay: 	 2.24 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#

@@ -49,18 +49,19 @@ class BlobScaleDetector(BlobDetector):
 		#Set by CalibrateStandardScaling
 		self.__scale_params['standard_scale_distance'] = 100  #pixels
 
-	def CalibrateBlobScaleDetector(self, printInfo=False, force_calibration=False):
+	def CalibrateBlobScaleDetector(self, printInfo=False, force_calibration=False, force_blob_calibration=False):
 		'''
 		 @brief Calibrate the blob scale detector
 
 		 @param printInfo (Print info during calibration (default=False))
 		 @param force_calibration (True/False for forcing new full calibration)
+		 @param force_blob_calibration (True/False)
 		'''
 		self.CalibrateStereoVisionSystem(force_calibration=force_calibration, default_frame_shape=self.GetDesiredFrameShape())
-		if not(self.LoadBlobScaleParameters()) or self.__calib_reset or force_calibration:
+		if not(self.LoadBlobScaleParameters()) or self.__calib_reset or force_calibration or force_blob_calibration:
 			self.CalibrateStandardScaling(printInfo=printInfo)
 			self.SaveBlobScaleParameters()
-		self.CalibrateBlobDetector(self.GetStandardScaleDistance())
+		self.CalibrateBlobDetector(self.GetStandardScaleDistance(), self.GetStandardPointSize())
 		
 	def CalibrateStandardScaling(self, printInfo=False):
 		'''
@@ -71,9 +72,10 @@ class BlobScaleDetector(BlobDetector):
 		self.SetScalingImages()
 		
 		standard_scale_distances = []
+		mean_point_sizes 		 = []
 		for sl_fname, fname in self.__calib_img_fnames:
-			frame 													= GetImage(fname)
-			sl_frame 												= GetImage(sl_fname)
+			frame 													= GetImage(fname, gray=False)
+			sl_frame 												= GetImage(sl_fname, gray=False)
 			try:
 				delta_frame, keypoints, descriptors, frame, sl_frame = self.GetPointList(frame, sl_frame, concatenate_points=True, compute_descriptors=False)
 			except DroneVisionError, err:
@@ -83,7 +85,7 @@ class BlobScaleDetector(BlobDetector):
 				continue
 			width, height 											= GetShape(sl_frame)
 			blockSize 												= int(math.sqrt(math.pow(width, 2.0) + math.pow(height, 2.0))//2)
-			scaling_point_frame 									= self.PointScaleMatch(delta_frame, keypoints, blockSize)
+			scaling_point_frame, mean_point_size 					= self.PointScaleMatch(delta_frame, keypoints, blockSize)
 			standard_scale_distance 								= self.ComputeStandardScaleDistance(scaling_point_frame)
 			if np.isnan(standard_scale_distance):
 				err = 'No scaling points detected - file: {0}, SL file: {1}'.format(fname, sl_fname)
@@ -93,10 +95,12 @@ class BlobScaleDetector(BlobDetector):
 				continue
 
 			standard_scale_distances.append(standard_scale_distance)
+			mean_point_sizes.append(mean_point_size)
 		
 		if len(standard_scale_distances) == 0:
 			raise ValueError('Could not compute any scaling points - please provide adequate frame samples!')
-		self.__scale_params['standard_scale_distance'] = np.mean(standard_scale_distances)
+		self.__scale_params['standard_scale_distance'] 	= np.mean(standard_scale_distances)
+		self.__scale_params['mean_point_size'] 			= np.mean(mean_point_sizes)
 		if printInfo:
 			print 'Standard blob scale calibration parameter: ', self.__scale_params['standard_scale_distance']
 
@@ -166,6 +170,14 @@ class BlobScaleDetector(BlobDetector):
 		'''
 		return self.__scale_params['standard_scale_distance']
 
+	def GetStandardPointSize(self):
+		'''
+		 @brief Get the standard size of points
+
+		 @return standard scale distance
+		'''
+		return self.__scale_params['mean_point_size']
+
 	def GetAverageScaling(self, scaling_point_frame):
 		'''
 		 @brief Compute average scaling distance of the scaling distances within the standard deviation.
@@ -196,7 +208,7 @@ class BlobScaleDetector(BlobDetector):
 		 @param blockSize (Should be about a quarter of the frame size if the points are distributed evenly on the frame)
 		 @param filtrate_scaling_points (If None, then is is set by the class instance settings (default=None))
 
-		 @return scaling_point_frame
+		 @return scaling_point_frame, mean_point_size
 		'''
 		# Class instance settings
 		if filtrate_scaling_points == None:
@@ -206,11 +218,14 @@ class BlobScaleDetector(BlobDetector):
 		points_frame 			= np.zeros((height, width), dtype=np.uint16)
 		scaling_point_frame 	= np.zeros((height, width))
 		float_points_list 		= [None]*(width*height)
+		mean_point_size = 0.0
 		for point in keypoints:
 			x = int(round(point.pt[1]))
 			y = int(round(point.pt[0]))
 			float_points_list[x*width + y] = point
+			mean_point_size += point.size
 			points_frame[x, y] = point.size
+		mean_point_size /= len(keypoints)
 		blockSize_radi = blockSize//2
 		points_pos = np.argwhere(points_frame > 0)
 		for i in range(len(points_pos)):
@@ -254,7 +269,7 @@ class BlobScaleDetector(BlobDetector):
 		if filtrate_scaling_points:
 			scaling_point_frame = self.FiltrateScalingPoints(scaling_point_frame)
 
-		return scaling_point_frame
+		return scaling_point_frame, mean_point_size
 
 	def SaveBlobScaleParameters(self):
 		'''

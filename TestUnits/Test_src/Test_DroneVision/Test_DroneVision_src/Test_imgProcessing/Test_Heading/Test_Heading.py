@@ -129,7 +129,7 @@ class Test_Heading(unittest.TestCase, Test_main, TestData):
 			warnings.simplefilter('default')
 
 		touple_frames = []
-		#touple_frames.append(('SL frame', sl_frame))
+		#touple_frames.append(('Frame', sl_frame))
 		touple_frames.append(('SL Frame', sl_frame_un))
 		#touple_frames.append(('Original points', delta_frame))
 		#touple_frames.append(('Hough lines', hough_frame))
@@ -144,4 +144,4 @@ class Test_Heading(unittest.TestCase, Test_main, TestData):
 			print 'Tip or root not detected'
 		if not(self.CheckAllTests()):
 			print 'PLOTTING FRAMES'
-			MatplotShow(touple_frames, fn_frame+'_Heading', savefig_folder=self.savefig_folder+'heading_test/', save_fig=self.save_figs, save_fig_only=self.save_figs_only, inlude_main_title_in_plot=False)
+			MatplotShow(touple_frames, fn_frame+'_Heading', savefig_folder=self.savefig_folder+'heading_test/', default_n_cols=2, save_fig=self.save_figs, save_fig_only=self.save_figs_only, inlude_main_title_in_plot=False)

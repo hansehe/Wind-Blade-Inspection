@@ -88,6 +88,41 @@ def CheckColor(frame):
 		cl_frame = frame
 	return cl_frame
 
+def FilterByColor(frame, lower=None, upper=None, hvs_cl_threshold=0):
+	'''
+	 @brief Filter color frame by color
+
+	 @param frame (color frame)
+	 @param lower (Lower boundary given as tuple of (B, G, R))
+	 @param upper (Upper boundary given as tuple of (B, G, R))
+		Upper and lower limits are set to detect green colors if either is None
+
+	 @return mask (Filter mask, nxm array of masked values)
+	'''
+	if isinstance(lower, type(None)) or isinstance(upper, type(None)):
+		lower 		= (60 - hvs_cl_threshold, 40, 200)
+		upper 		= (60 + hvs_cl_threshold, 255, 255)
+	hsv_frame 	= cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+	mask 		= cv2.inRange(hsv_frame, np.array(lower, dtype=np.uint8), np.array(upper, dtype=np.uint8))
+	return mask
+
+def CropFrame(frame, crop_frame_divisor):
+	'''
+	 @brief Crop frame around the frame center according to the crop frame divisor
+
+	 @param frame (grayscale)
+	 @param crop_frame_divisor (0 < Float <= 1 - divisor for cropping frames. F.ex 0.5 will crop the frame to half the size around the frame center.)
+	
+	 @return cropped_frame
+	'''
+	height, width = GetShape(frame)
+	center_height 	= height/2.0
+	center_width	= width/2.0
+	crop_c_height 	= center_height*crop_frame_divisor
+	crop_c_width 	= center_width*crop_frame_divisor
+	cropped_frame 	= frame[int(center_height - crop_c_height):int(center_height + crop_c_height), int(center_width - crop_c_width):int(center_width + crop_c_width)]
+	return cropped_frame
+
 def ComputePyrDownDivisor(desired_frame_shape, incoming_frame_shape):
 	'''
 	 @brief Compute downsample divisor by referring to a desired frame shape, and the shape of incoming frames.
@@ -112,7 +147,7 @@ def PyrDown(frame, default_divisor=2, desired_frame_shape=(-1,-1)):
 	'''
 	 @brief Downsample frame using gaussian pyramid downsampling.
 
-	 @param frame (grayscale)
+	 @param frame
  	 @param default_divisor - Default level of downsampling (default=2)
 	 @param desired_frame_shape - Desired final frame shape, given as a tuple of (height, width). Set to (-1,-1) to not compute a divisor, but stay to the fixed default_divisor (default=(-1,-1))
 	 	- args in cv2 method:
@@ -130,7 +165,7 @@ def PyrDown(frame, default_divisor=2, desired_frame_shape=(-1,-1)):
 	n_divisor = 1
 	while n_divisor < divisor:
 		#PP: Reduce image according to gaussian pyramid method
-		rows, cols 	= frame.shape
+		rows, cols 	= GetShape(frame)
 		frame 		= cv2.pyrDown(frame, frame, (cols/delimiter, rows/delimiter))
 		n_divisor 	*= delimiter
 	return frame

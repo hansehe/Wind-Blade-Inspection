@@ -45,10 +45,33 @@ class Test_LaserLink(unittest.TestCase, Test_main, TestData):
 		settings_inst  = self.Settings.Settings()
 		laserlink = self.LaserLink.LaserLink(settings_inst.GetSettings('LASER', 'laser_triggerPin'))
 
-		laserlink.InitLaser()
+		laserlink.AssertAvailableLaser()
 
-		for i in range(0, 2):
-			time.sleep(0.5)
+		for i in range(0, 10):
+			time.sleep(0.1)
 			laserlink.LaserON()
-			time.sleep(0.5)
+			time.sleep(0.1)
+			laserlink.LaserOFF()
+
+	def test_LaserLinkManualTrig(self):
+		'''
+		 @brief Test laser by turning it on and off manually
+		'''
+		if self.CheckAllTests():
+			return
+
+		import time
+		from getpass import getpass
+		from src.bin.UserInput.UserInput import UserInput
+
+		settings_inst  = self.Settings.Settings()
+		laserlink = self.LaserLink.LaserLink(settings_inst.GetSettings('LASER', 'laser_triggerPin'))
+		userInput = UserInput(settings_inst.GetSettings('USER_INPUT'))
+
+		laserlink.AssertAvailableLaser()
+
+		while (not(userInput.CheckTerminated())):
+			getpass('Hit enter to turn laser ON..')
+			laserlink.LaserON()
+			getpass('Hit enter to turn laser OFF..')
 			laserlink.LaserOFF()

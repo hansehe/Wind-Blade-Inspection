@@ -158,28 +158,28 @@ def DetectBoundaryEdges(origin_frame, bounded_lines, max_min_lines, scale_thresh
 				edgel_frame = DrawHoughLine(edgel_frame, max_hor_hough_line, color)
 			x = max_hor_line_edge_points[0][i]
 			y = max_hor_line_edge_points[1][i]
-			cv2.circle(edgel_frame,(x,y), 10, color, -1)
+			cv2.circle(edgel_frame,(x,y), 5, color, -1)
 		for i in range(len(min_hor_line_edge_points[0])):
 			if i == 0:
 				color = (0,255,255) #LIGHT BLUE
 				edgel_frame = DrawHoughLine(edgel_frame, min_hor_hough_line, color)
 			x = min_hor_line_edge_points[0][i]
 			y = min_hor_line_edge_points[1][i]
-			cv2.circle(edgel_frame,(x,y), 10, color, -1)
+			cv2.circle(edgel_frame,(x,y), 5, color, -1)
 		for i in range(len(max_vert_line_edge_points[0])):
 			if i == 0:
 				color = (204,0,204) #PURPLE
 				edgel_frame = DrawHoughLine(edgel_frame, max_vert_hough_line, color)
 			x = max_vert_line_edge_points[0][i]
 			y = max_vert_line_edge_points[1][i]
-			cv2.circle(edgel_frame,(x,y), 10, color, -1)
+			cv2.circle(edgel_frame,(x,y), 5, color, -1)
 		for i in range(len(min_vert_line_edge_points[0])):
 			if i == 0:
 				color = (0,255,0) #GREEN
 				edgel_frame = DrawHoughLine(edgel_frame, min_vert_hough_line, color)
 			x = min_vert_line_edge_points[0][i]
 			y = min_vert_line_edge_points[1][i]
-			cv2.circle(edgel_frame,(x,y), 10, color, -1)
+			cv2.circle(edgel_frame,(x,y), 5, color, -1)
 
 	if print_hough_positions:
 		print 'max_hor_hough_line: ', max_hor_hough_line

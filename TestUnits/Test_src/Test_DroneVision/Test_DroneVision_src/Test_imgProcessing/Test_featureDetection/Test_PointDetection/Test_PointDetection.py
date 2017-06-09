@@ -55,9 +55,10 @@ class Test_PointDetection(unittest.TestCase, Test_main, TestData):
 		 @param fn_frame Frame filename without points.
 		 @param fn_slframe Frame filename with points.
 		'''
-		import timeit
+		import timeit, warnings
 		import numpy as np
 		from src.DroneVision.DroneVision_src.hardware.imageTools import GetImage, MatplotShow
+		from Settings.Exceptions import DroneVisionError
 
 		print '\n'
 		print '#----------- TESTING POINT DETECTION   \t---------------#'
@@ -81,12 +82,24 @@ class Test_PointDetection(unittest.TestCase, Test_main, TestData):
 		total_delay = timeit.default_timer()
 
 		delay = timeit.default_timer()
-		delta_frame, point_kp, blob_desc, frame_un, sl_frame_un = pointDet.GetPointList(frame, sl_frame, draw=False)
+		try:
+			delta_frame, point_kp, blob_desc, frame_un, sl_frame_un = pointDet.GetPointList(frame, sl_frame, draw=False)
+		except DroneVisionError, err:
+			warnings.simplefilter('always')
+			warnings.warn(str(err), Warning)
+			warnings.simplefilter('default')
+			return
 		timeout = timeit.default_timer() - delay
 		print 'Delay for blob point detection: {0} sec, detected blobs: {1}'.format(timeout, len(point_kp))
 
 		delay = timeit.default_timer()
-		hough_frame, edgel_map_filtered, boundary_hough_lines = pointDet.GetBoundaryHoughLines(frame_un, delta_frame, point_kp, filtrate_edge_points=True, draw=False)
+		try:
+			hough_frame, edgel_map_filtered, boundary_hough_lines = pointDet.GetBoundaryHoughLines(frame_un, delta_frame, point_kp, filtrate_edge_points=True, draw=False)
+		except DroneVisionError, err:
+			warnings.simplefilter('always')
+			warnings.warn(str(err), Warning)
+			warnings.simplefilter('default')
+			return
 		timeout = timeit.default_timer() - delay
 		print 'Delay for finding boundary edges (filtered) + lines: {0} sec'.format(timeout)
 
@@ -112,6 +125,10 @@ class Test_PointDetection(unittest.TestCase, Test_main, TestData):
 		#touple_frames.append(('Bounded Lines', hough_frame))
 		touple_frames.append(('Edgel Lines (filtered)', edgel_map_filtered))
 		touple_frames.append(('Edgel Lines (unfiltered)', edgel_map_unfiltered))
+
+		#touple_frames.append(('Frame', frame_un))
+		#touple_frames.append(('SL Frame', sl_frame_un))
+		#touple_frames.append(('Blade Edges', edgel_map_filtered))
 		if not(self.CheckAllTests()):
 			#MatplotShow([('Keypoints', kp_frame)], fn_frame+'_pointdetection_test', savefig_folder=self.savefig_folder+'pointdetection_test/', save_fig=self.save_figs, save_fig_only=self.save_figs_only)
-			MatplotShow(touple_frames, fn_frame+'_pointdetection_test', savefig_folder=self.savefig_folder+'pointdetection_test/', default_n_cols=2, save_fig=self.save_figs, save_fig_only=self.save_figs_only, inlude_main_title_in_plot=False)
+			MatplotShow(touple_frames, fn_frame+'_pointdetection_test', savefig_folder=self.savefig_folder+'pointdetection_test/', default_n_cols=3, save_fig=self.save_figs, save_fig_only=self.save_figs_only, inlude_main_title_in_plot=False)

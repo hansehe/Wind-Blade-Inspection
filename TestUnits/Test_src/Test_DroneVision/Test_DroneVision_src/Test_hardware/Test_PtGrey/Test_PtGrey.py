@@ -53,9 +53,9 @@ class Test_PtGrey(unittest.TestCase, Test_main, TestData):
 			settings.GetSettings('CAMERA', 'ptg_recv_frame_timeout'))
 
 		print '\n\n'
-		#print 'FORMAT7: {0}\n\n'.format(ptgrey.SetFormat7Configuration(mode=ptgrey.GetFc2().MODE_0, pixel_format=ptgrey.GetFc2().PIXEL_FORMAT_RGB8))
+		print 'FORMAT7: {0}\n\n'.format(ptgrey.SetFormat7Configuration(mode=ptgrey.GetFc2().MODE_0, pixel_format=ptgrey.GetFc2().PIXEL_FORMAT_RGB8))
 		#print 'VIDEO AND FRAME RATE: {0}\n\n'.format(ptgrey.SetVideoModeAndFrameRate(video_mode=ptgrey.GetFc2().VIDEOMODE_FORMAT7)) # Unknown error when setting video mode and frame rate
-		print 'FORMAT7: {0}\n\n'.format(ptgrey.SetFormat7Configuration(mode=ptgrey.GetFc2().MODE_0, pixel_format=ptgrey.GetFc2().PIXEL_FORMAT_RAW8))
+		#print 'FORMAT7: {0}\n\n'.format(ptgrey.SetFormat7Configuration(mode=ptgrey.GetFc2().MODE_0, pixel_format=ptgrey.GetFc2().PIXEL_FORMAT_RAW8))
 		print 'CONFIGURATIONS: {0}\n\n'.format(ptgrey.SetConfiguration(num_buffers=3))
 
 		ptgrey.StartCapture()
@@ -63,30 +63,30 @@ class Test_PtGrey(unittest.TestCase, Test_main, TestData):
 		print "######## SET MANUAL ##########\n\n"
 
 		''' FOR RGB8 FRAME SETTINGS '''
-		# print 'FORMAT7 (warning): {0}\n\n'.format(ptgrey.SetFormat7Configuration()) # Expect warning
-		# print 'VIDEO AND FRAME RATE (warning): {0}\n\n'.format(ptgrey.SetVideoModeAndFrameRate()) #Expect warning
-		# print 'CONFIGURATIONS (warning): {0}\n\n'.format(ptgrey.SetConfiguration()) # Expect warning
-		# print 'FRAME RATE: {0}\n\n'.format(ptgrey.SetFrameRate(32.0))
-		# print 'SET GAIN: {0}\n\n'.format(ptgrey.SetGain(7.3, auto=False))
-		# print 'SET SHUTTER: {0}\n\n'.format(ptgrey.SetShutter(300.52, auto=False))
-		# print 'SET BRIGHTNESS: {0}\n\n'.format(ptgrey.SetBrightness(0.5))
-		# print 'SET AUTO EXPOSURE: {0}\n\n'.format(ptgrey.SetAutoExposure(1.34, auto=False))
-		# #print 'SET SHARPNESS: {0}\n\n'.format(ptgrey.SetSharpness(7.3, auto=False)) # Unkown api error
-		# print 'SET GAMMA: {0}\n\n'.format(ptgrey.SetGamma(1.5, auto=False))
-		# print 'SET WHITE BALANCE: {0}\n\n'.format(ptgrey.SetWhiteBalance(1536, 0, auto=False))
-
-		''' FOR RAW8 FRAME SETTINGS '''
 		print 'FORMAT7 (warning): {0}\n\n'.format(ptgrey.SetFormat7Configuration()) # Expect warning
 		print 'VIDEO AND FRAME RATE (warning): {0}\n\n'.format(ptgrey.SetVideoModeAndFrameRate()) #Expect warning
 		print 'CONFIGURATIONS (warning): {0}\n\n'.format(ptgrey.SetConfiguration()) # Expect warning
 		print 'FRAME RATE: {0}\n\n'.format(ptgrey.SetFrameRate(32.0))
-		print 'SET GAIN: {0}\n\n'.format(ptgrey.SetGain(28.09, auto=False))
-		print 'SET SHUTTER: {0}\n\n'.format(ptgrey.SetShutter(109.61, auto=False))
+		print 'SET GAIN: {0}\n\n'.format(ptgrey.SetGain(14.3, auto=False))
+		print 'SET SHUTTER: {0}\n\n'.format(ptgrey.SetShutter(300.52, auto=False))
 		print 'SET BRIGHTNESS: {0}\n\n'.format(ptgrey.SetBrightness(3.0))
-		print 'SET AUTO EXPOSURE: {0}\n\n'.format(ptgrey.SetAutoExposure(0.923, auto=False))
-		#print 'SET SHARPNESS: {0}\n\n'.format(ptgrey.SetSharpness(28.1, auto=False)) # Unkown api error
+		print 'SET AUTO EXPOSURE: {0}\n\n'.format(ptgrey.SetAutoExposure(1.34, auto=False))
+		#print 'SET SHARPNESS: {0}\n\n'.format(ptgrey.SetSharpness(7.3, auto=False)) # Unkown api error
 		print 'SET GAMMA: {0}\n\n'.format(ptgrey.SetGamma(1.5, auto=False))
 		print 'SET WHITE BALANCE: {0}\n\n'.format(ptgrey.SetWhiteBalance(1536, 0, auto=False))
+
+		''' FOR RAW8 FRAME SETTINGS '''
+		# print 'FORMAT7 (warning): {0}\n\n'.format(ptgrey.SetFormat7Configuration()) # Expect warning
+		# print 'VIDEO AND FRAME RATE (warning): {0}\n\n'.format(ptgrey.SetVideoModeAndFrameRate()) #Expect warning
+		# print 'CONFIGURATIONS (warning): {0}\n\n'.format(ptgrey.SetConfiguration()) # Expect warning
+		# print 'FRAME RATE: {0}\n\n'.format(ptgrey.SetFrameRate(32.0))
+		# print 'SET GAIN: {0}\n\n'.format(ptgrey.SetGain(28.09, auto=False))
+		# print 'SET SHUTTER: {0}\n\n'.format(ptgrey.SetShutter(109.61, auto=False))
+		# print 'SET BRIGHTNESS: {0}\n\n'.format(ptgrey.SetBrightness(3.0))
+		# print 'SET AUTO EXPOSURE: {0}\n\n'.format(ptgrey.SetAutoExposure(0.923, auto=False))
+		# #print 'SET SHARPNESS: {0}\n\n'.format(ptgrey.SetSharpness(28.1, auto=False)) # Unkown api error
+		# print 'SET GAMMA: {0}\n\n'.format(ptgrey.SetGamma(1.5, auto=False))
+		# print 'SET WHITE BALANCE: {0}\n\n'.format(ptgrey.SetWhiteBalance(1536, 0, auto=False))
 
 		if self.ptgrey_grab_infinite:
 			#realTimePlot = RealTimePlot(interactive_mode=True)

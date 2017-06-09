@@ -4,7 +4,7 @@
  Project: Master's Thesis - Autonomous Inspection Of Wind Blades
  Repository: Master's Thesis - CV (Computer Vision)
 '''
-import os, threading, timeit, time
+import os, threading, timeit, time, warnings
 from datetime import datetime
 
 def RemoveDir(directory):

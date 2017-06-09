@@ -90,7 +90,7 @@ class Test_BlobScaleDetector(unittest.TestCase, Test_main, TestData):
 		delay = timeit.default_timer()
 		width, height 	= GetShape(sl_frame)
 		blockSize 		= int(math.sqrt(math.pow(width, 2.0) + math.pow(height, 2.0))//4)
-		scaling_point_frame = pointDet.PointScaleMatch(delta_frame, points_kp, blockSize)
+		scaling_point_frame, mean_point_size = pointDet.PointScaleMatch(delta_frame, points_kp, blockSize)
 		print 'Delay for computing disparity points: {0} sec'.format(timeit.default_timer() - delay)
 
 		timeout = timeit.default_timer() - total_delay

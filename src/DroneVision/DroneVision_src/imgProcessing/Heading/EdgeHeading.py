@@ -164,7 +164,7 @@ class EdgeHeading():
 			edge_line = True
 
 		if draw:
-			cv2.circle(frame,(int(round(x_center)),int(round(y_center))), 20, color, 3)
+			cv2.circle(frame,(int(round(x_center)),int(round(y_center))), 10, color, 2)
 			if edge_line:
 				frame = self.DrawHeading(frame, (rho, theta), color=color)
 
@@ -320,7 +320,7 @@ class EdgeHeading():
 					correct = False
 		return correct
 
-	def DrawHeading(self, frame, heading, color=(255,255,0), line_thick=5, draw_arrow=True):
+	def DrawHeading(self, frame, heading, color=(255,255,0), line_thick=2, draw_arrow=True):
 		'''
 		 @brief Draw heading on frame.
 		 	Heading is measured from image center.

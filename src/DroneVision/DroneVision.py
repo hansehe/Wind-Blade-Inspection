@@ -17,7 +17,6 @@ from Settings.Exceptions import DroneVisionError
 
 # Extra tools
 from src.bin.tools import CheckDir
-from DroneVision_src.imgProcessing.frameTools.frameTools import CheckGrayScale
 
 # Hardware Link
 from DroneVision_src.hardware.ImageLink import ImageLink
@@ -46,8 +45,13 @@ class DroneVision(PointDetection, Heading, Settings):
 			self.ResetSettings(settings_inst.GetRawSettings())
 		else:
 			self.GetInitialSettings()
-		self.__me_master 			= me_master
-		self.__droneVision_ready 	= False
+		self.__me_master 				= me_master
+		self.__droneVision_ready 		= False
+		self.__crop_frames 				= False
+		self.__delta_fan_angle_divisor 	= 1.0
+		if (self.GetSettings('LASER', 'fan_angle') < self.GetSettings('CAMERA', 'fan_angle')) and self.GetSettings('CV', 'crop_frames'):
+			self.__crop_frames 				= True
+			self.__delta_fan_angle_divisor 	= self.GetSettings('LASER', 'fan_angle') / self.GetSettings('CAMERA', 'fan_angle')
 		self.CheckManualTriggeringAndAutoMode()
 		PointDetection.__init__(self, self.__me_master, self.GetSettings(), plot_figure=plot_figure)
 		Heading.__init__(self, self.GetSettings('CV', 'rho_step_distance'), self.GetSettings('CV', 'rho_min_diag_perc'))
@@ -173,12 +177,10 @@ class DroneVision(PointDetection, Heading, Settings):
 		if not(isinstance(original_frame, np.ndarray)) or not(isinstance(original_sl_frame, np.ndarray)):
 			original_frame, original_sl_frame = self.GetRawFrames()
 
-		frame 		= CheckGrayScale(original_frame)
-		sl_frame 	= CheckGrayScale(original_sl_frame)
 		##########################################
 		#----------- PROCESS FRAME --------------#
 		compute_descriptors = not(self.GetUsingBlockMatching())
-		delta_frame, keypoints, descriptors, frame_un, sl_frame_un = self.GetPointList(frame, sl_frame, compute_descriptors=compute_descriptors, draw=draw_detected_points)
+		delta_frame, keypoints, descriptors, frame_un, sl_frame_un = self.GetPointList(original_frame, original_sl_frame, compute_descriptors=compute_descriptors, draw=draw_detected_points, crop_frames=self.__crop_frames, crop_frame_divisor=self.__delta_fan_angle_divisor)
 		##########################################
 		return (original_frame, original_sl_frame, frame_un, delta_frame, keypoints, descriptors)
 

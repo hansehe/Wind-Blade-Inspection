@@ -50,14 +50,15 @@ class FeatureStereopsis(BlobScaleDetector):
 		self.__block_matching_param			= feature_stereo_settings_inst.GetSettings('block_matching_parameter')
 		self.__use_brute_force_matching 	= feature_stereo_settings_inst.GetSettings('use_brute_force')
 
-	def CalibrateFeatureStereopsis(self, printInfo=False, force_calibration=False):
+	def CalibrateFeatureStereopsis(self, printInfo=False, force_calibration=False, force_blob_calibration=False):
 		'''
 		 @brief Run standard stereopsis calibration.
 
 		 @param printInfo (Print info during calibration (default=False))
 		 @param force_calibration (True/False for forcing new full calibration)
+		 @param force_blob_calibration (True/False)
 		'''
-		self.CalibrateBlobScaleDetector(printInfo=printInfo, force_calibration=force_calibration)
+		self.CalibrateBlobScaleDetector(printInfo=printInfo, force_calibration=force_calibration, force_blob_calibration=force_blob_calibration)
 
 	def Get3DPoints(self, left_delta_frame_shape, right_delta_frame_shape, keypoints_l, descriptors_l, keypoints_r, descriptors_r, filtrate_3Dpoints=True, concatenate_points=False, draw=False, left_delta_frame=None, right_delta_frame=None):
 		'''

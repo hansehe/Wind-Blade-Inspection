@@ -26,15 +26,16 @@ class LaserLink():
 		'''
 		self.AssertAvailableLaser()
 
-	def LaserON(self, wait_ready_t=0.01):
+	def LaserON(self, wait_ready_t=0.0):
 		'''
 		 @brief Turn laser OFF
 
-		 @param wait_ready_t (Time to wait for the laser to turn on. (default=0.01))
+		 @param wait_ready_t (Time to wait for the laser to turn on. (default=0.0))
 		'''
 		self.AssertAvailableLaser()
 		self.__laser_pin.SetPinHigh()
-		time.sleep(wait_ready_t)
+		if wait_ready_t > 0:
+			time.sleep(wait_ready_t)
 
 	def LaserOFF(self):
 		'''

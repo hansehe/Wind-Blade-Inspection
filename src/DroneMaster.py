@@ -60,7 +60,8 @@ class DroneMaster(Master, DroneVision, Settings, DataBase, UserInput):
 		self.__descriptors_r 							= None
 		self.__req_success 								= False
 		self.__req_error 								= False
-		self.__force_calibration						= False
+		self.__force_stereo_vision_calibration			= False
+		self.__force_blob_calibration 					= False
 		self.__calibrate_stereopsis_session 			= calibrate_stereopsis_session
 		self.__calibrate_blob_scale_detector_session 	= calibrate_blob_scale_detector_session
 
@@ -79,7 +80,7 @@ class DroneMaster(Master, DroneVision, Settings, DataBase, UserInput):
 			self.__realTimePlot.SetSaveFigFolder(self.GetDatabaseOutputFolder() + self.GetSettings('REAL_TIME_PLOT', 'save_fig_folder'))
 		self.RequestCVCalibration(self.__calibrate_stereopsis_session, self.__calibrate_blob_scale_detector_session)
 		self.CheckRunMasterCalibration(self.__calibrate_stereopsis_session, self.__calibrate_blob_scale_detector_session)
-		self.CalibratePointDetection(force_calibration=self.__force_calibration)
+		self.CalibratePointDetection(force_calibration=self.__force_stereo_vision_calibration, force_blob_calibration=self.__force_blob_calibration)
 		self.WaitSlaveReady()
 		self.SetDatabaseTableName(self.__timestamp, master=True, wait_for_user=not(self.GetSettings('USER_INPUT', 'automatic_mode')))
 		self.SendFlagToSlave(True) # Send flag to slave commanding it to continue
@@ -100,11 +101,12 @@ class DroneMaster(Master, DroneVision, Settings, DataBase, UserInput):
 		if self.GetSettings('REAL_TIME_PLOT', 'real_time_plot_on'):
 			self.__realTimePlot(reset=True)
 		self.StartAutoHandleUserInput()
+		self.ResetTermination()
 		while not(self.CheckFinished()):
 			##########################################
 
 			#----------- COMPUTER VISION ------------#
-			points_error, boundary_error, heading_error, stereo_error, heading_distance, heading_angle, points3D, frame_un_l, delta_frame_l, matches_frame = self.ProcessCV(draw_heading=draw_heading, draw_hough_lines=draw_hough_lines, draw_detected_points=draw_detected_points, draw_matches=draw_matches)
+			points_error, boundary_error, heading_error, stereo_error, heading_distance, heading_angle, points3D, frame_un_l, delta_frame_l, hough_frame, matches_frame = self.ProcessCV(draw_heading=draw_heading, draw_hough_lines=draw_hough_lines, draw_detected_points=draw_detected_points, draw_matches=draw_matches)
 			if isinstance(points_error, PtGreyError): # Dominant error - continue with next frame
 				continue
 			if stereo_error == None and points_error == None:
@@ -132,15 +134,13 @@ class DroneMaster(Master, DroneVision, Settings, DataBase, UserInput):
 					self.SetProcessData('rho', heading_distance)
 					self.SetProcessData('theta', heading_angle)
 				if store_frames and store_drawn_frames:
-					if draw_heading and not(isinstance(heading_error, DroneVisionError)):
+					if draw_heading:
 						self.SetProcessFrame('heading', frame_un_l)
-					elif draw_heading and isinstance(heading_error, DroneVisionError):
-						self.SetProcessFrame('failed_heading', frame_un_l)
 					if draw_matches and not(isinstance(stereo_error, DroneVisionError)):
 						self.SetProcessFrame('matches', matches_frame)
 					if draw_hough_lines and not(isinstance(boundary_error, DroneVisionError)):
-						self.SetProcessFrame('hough_lines', delta_frame_l)
-					elif draw_detected_points and not(isinstance(points_error, DroneVisionError)):
+						self.SetProcessFrame('hough_lines', hough_frame)
+					if draw_detected_points:
 						self.SetProcessFrame('points', delta_frame_l)
 
 			if not(print_3D_points) or stereo_error != None or points_error != None:
@@ -152,15 +152,13 @@ class DroneMaster(Master, DroneVision, Settings, DataBase, UserInput):
 			if self.GetSettings('REAL_TIME_PLOT', 'real_time_plot_on'):
 				if not(isinstance(points_error, DroneVisionError)):
 					plot_frames = []
-					if draw_heading and not(isinstance(heading_error, DroneVisionError)):
+					if draw_heading:
 						plot_frames.append(('heading', frame_un_l))
-					elif draw_heading and isinstance(heading_error, DroneVisionError):
-						plot_frames.append(('failed_heading', frame_un_l))
 					if draw_matches and not(isinstance(stereo_error, DroneVisionError)):
 						plot_frames.append(('matches', matches_frame))
 					if draw_hough_lines and not(isinstance(boundary_error, DroneVisionError)):
-						plot_frames.append(('hough_lines', delta_frame_l))
-					elif draw_detected_points and not(isinstance(points_error, DroneVisionError)):
+						plot_frames.append(('hough_lines', hough_frame))
+					if draw_detected_points:
 						plot_frames.append(('points', delta_frame_l))
 					self.__realTimePlot(plot_frames)
 			#----------------------------------------#
@@ -195,17 +193,19 @@ class DroneMaster(Master, DroneVision, Settings, DataBase, UserInput):
 		 @param calibrate_stereopsis (Set calibrate_stereopsis to True for starting a new stereopsis calibration session (default=False))
 		 @param calibrate_blob_scale_detector (Set calibrate_blob_scale_detector to True for starting a new blob scale detector calibration session (default=False))
 		'''
-		n_saved_calib_frame_sets = 0
+		n_stereo_saved_calib_frame_sets = 0
+		n_blob_saved_calib_frame_sets 	= 0
 		if calibrate_stereopsis:
 			calib_folder = self.GetSettings('CALIB', 'calib_img_folder_left_cam')
-			n_saved_calib_frame_sets += self.RunMasterCalibration(calib_folder, True)
+			n_stereo_saved_calib_frame_sets += self.RunMasterCalibration(calib_folder, True)
 		if calibrate_blob_scale_detector:
 			calib_folder = self.GetSettings('BLOB_SCALE', 'scale_calib_folder')
-			n_saved_calib_frame_sets += self.RunMasterCalibration(calib_folder, False)
+			n_blob_saved_calib_frame_sets += self.RunMasterCalibration(calib_folder, False)
 		if (calibrate_stereopsis or calibrate_blob_scale_detector) and not(self.GetSettings('BASIC', 'reset_calibration')):
-			force_calibration = self.GetYesNoFromUser('Force new calibration with new calibration samples?')
-			self.SendFlagToSlave(force_calibration)
-			self.__force_calibration = force_calibration
+			self.__force_stereo_vision_calibration = self.GetYesNoFromUser('Force new stereopsis calibration with new calibration samples?')
+			self.__force_blob_calibration = self.GetYesNoFromUser('Force new blob calibration with new calibration samples?')
+			self.SendFlagToSlave(self.__force_stereo_vision_calibration)
+			self.SendFlagToSlave(self.__force_blob_calibration)
 		if self.GetSettings('REAL_TIME_PLOT', 'real_time_plot_on'):
 			self.__realTimePlot(reset=True)
 
@@ -306,10 +306,10 @@ class DroneMaster(Master, DroneVision, Settings, DataBase, UserInput):
 		'''
 		points_error, frame_un_l, delta_frame_l, keypoints_l, descriptors_l, und_shape_r, keypoints_r, descriptors_r = self.GetProcessedFrames(draw_detected_points=draw_detected_points)
 		if points_error != None:
-			return points_error, None, None, None, None, None, None, None, None, None # Return failed frames.
-		boundary_error, heading_error, heading_distance, heading_angle, frame_un_l, delta_frame_l = self.ProcessHeading(frame_un_l, delta_frame_l, keypoints_l, draw_heading=draw_heading, draw_hough_lines=draw_hough_lines)
+			return points_error, None, None, None, None, None, None, None, None, None, None # Return failed frames.
+		boundary_error, heading_error, heading_distance, heading_angle, frame_un_l, hough_frame = self.ProcessHeading(frame_un_l, delta_frame_l, keypoints_l, draw_heading=draw_heading, draw_hough_lines=draw_hough_lines)
 		stereo_error, points3D, matches_frame = self.ProcessStereopsis(GetShape(frame_un_l), und_shape_r, keypoints_l, descriptors_l, keypoints_r, descriptors_r, draw_matches=draw_matches)
-		return None, boundary_error, heading_error, stereo_error, heading_distance, heading_angle, points3D, frame_un_l, delta_frame_l, matches_frame
+		return None, boundary_error, heading_error, stereo_error, heading_distance, heading_angle, points3D, frame_un_l, delta_frame_l, hough_frame, matches_frame
 
 	def GetProcessedFrames(self, draw_detected_points=False):
 		'''

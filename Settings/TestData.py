@@ -45,7 +45,6 @@ class TestData():
 		self.real_time_plot_on 							= True
 		self.real_time_plot_matplotlib 					= True
 		self.automatic_mode 							= False
-		self.manual_triggering 							= True
 		self.master_ip 									= 'localhost'
 
 		##### STEREO VISION TEST #####
@@ -80,7 +79,7 @@ class TestData():
 
 		####### PTG CAMERA TEST ###### 
 		self.slave_key 									= 'camera_slave' # Append this key word with the camera test to flag slave instance.
-		self.manual_triggering 							= True
+		self.manual_triggering 							= False
 		self.camera_capture_timeout						= 10.0
 		self.ptgrey_grab_infinite 						= True
 		###############################
@@ -95,7 +94,7 @@ class TestData():
 
 		######### SPECIFIC SAMPLE SET ###########
 
-		use_set 		= True
+		use_set 		= False
 		actual_distance = -1.0 # mm (-1 means that the object is too close to be measured using stereopsis)
 		baseline 		= 50.0 	# mm
 		folder 			= '../WindTurbineInspection_data/final_test_samples/edge_detection/blade/blade/'
@@ -115,7 +114,7 @@ class TestData():
 
 		######### BLADE TIP SET ###########
 
-		use_set 		= False
+		use_set 		= True
 		actual_distance = -1.0 # mm (-1 means that the object is too close to be measured using stereopsis)
 		baseline 		= 50.0 	# mm
 		folder 			= '../WindTurbineInspection_data/final_test_samples/edge_detection/blade/blade_tip/2016_02_11__17_20_34/'

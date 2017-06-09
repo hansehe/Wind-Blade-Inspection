@@ -6,8 +6,10 @@
 '''
 
 import time
+import numpy as np
 from LaserLink import LaserLink
 from PtGrey.PtGrey import PtGrey
+from src.DroneVision.DroneVision_src.imgProcessing.frameTools.frameTools import FilterByColor
 
 '''
  @brief Class for handling the Camera link.
@@ -34,8 +36,8 @@ class CameraLink(LaserLink, PtGrey):
 			manual_triggering, \
 			ptg_recv_frame_timeout)
 
-		self.StartCapture()
 		self.ConfigureCameraSettings(set_auto=self.__auto_PtGrey_config, use_color_frames=self.__use_color_frames) # Set initial values
+		self.StartCapture()
 
 	def ConfigureCameraSettings(self, set_auto=False, use_color_frames=False):
 		'''
@@ -49,23 +51,23 @@ class CameraLink(LaserLink, PtGrey):
 				self.SetFormat7Configuration(mode=self.GetFc2().MODE_0, pixel_format=self.GetFc2().PIXEL_FORMAT_RGB8)
 			else:
 				self.SetFormat7Configuration(mode=self.GetFc2().MODE_0, pixel_format=self.GetFc2().PIXEL_FORMAT_RAW8)
-			self.SetConfiguration(num_buffers=3)
+			self.SetConfiguration(num_buffers=2)
 		self.SetFrameRate(32.0)
 
 		if use_color_frames:
 			''' FOR RGB8 SETTINGS '''
-			self.SetGain(7.3, auto=set_auto)
-			self.SetShutter(50.52, auto=set_auto)
-			self.SetBrightness(2.0)
-			self.SetAutoExposure(1.34, auto=set_auto)
-			self.SetGamma(1.5, auto=set_auto)
-			self.SetWhiteBalance(1536, 0, auto=set_auto)
+			self.SetGain(14.3, auto=set_auto)
+			self.SetShutter(100.52, auto=set_auto)
+			self.SetBrightness(1.0)
+			self.SetAutoExposure(1.0, auto=set_auto)
+			self.SetGamma(1.0, auto=set_auto)
+			self.SetWhiteBalance(136, 0, auto=set_auto)
 		else:
 			''' FOR RAW8 SETTINGS '''
-			self.SetGain(28.09, auto=set_auto)
-			self.SetShutter(109.61, auto=set_auto)
-			self.SetBrightness(3.0)
-			self.SetAutoExposure(0.923, auto=set_auto)
+			self.SetGain(4.3, auto=set_auto)
+			self.SetShutter(5.52, auto=set_auto)
+			self.SetBrightness(4.0)
+			self.SetAutoExposure(4.923, auto=set_auto)
 			self.SetGamma(1.5, auto=set_auto)
 			self.SetWhiteBalance(1536, 0, auto=set_auto)
 
@@ -111,6 +113,11 @@ class CameraLink(LaserLink, PtGrey):
 		else:
 			sl_frame = None
 
+		#if self.__use_color_frames:
+		#	sl_frame = FilterByColor(frame) # Upper and lower tuples are given as (B, G, R) - default to green
+			#sl_frame 		= np.array(frame[:,:,1]) # Get green colored structured light
+			#sl_frame[np.where(sl_frame < 200)] = 0
+
 		self.__frame_i += 1
 
 		return frame, sl_frame
@@ -135,6 +142,7 @@ class CameraLink(LaserLink, PtGrey):
 		'''
 		self.RestartCapture()
 		self.ConfigureCameraSettings(set_auto=self.__auto_PtGrey_config, use_color_frames=self.__use_color_frames) # Set initial values
+		self.StartCapture()
 
 	def __del__(self):
 		'''DESTRUCTOR'''

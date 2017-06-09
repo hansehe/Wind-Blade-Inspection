@@ -95,8 +95,8 @@ class ImageLink():
 
 		 @return frame, sl_frame
 		'''
-		self.__frame 	= GetImage(self.__folder + self.__image_filenames[self.__frame_i])
-		self.__sl_frame = GetImage(self.__folder + self.__sl_image_filenames[self.__frame_i])
+		self.__frame 	= GetImage(self.__folder + self.__image_filenames[self.__frame_i], gray=False)
+		self.__sl_frame = GetImage(self.__folder + self.__sl_image_filenames[self.__frame_i], gray=False)
 
 		if not(GetShape(self.__frame)[0] == GetShape(self.__sl_frame)[0]) or not(GetShape(self.__frame)[1] == GetShape(self.__sl_frame)[1]):
 			raise Exception('Normal image and sl image dimensions are not consistent.')

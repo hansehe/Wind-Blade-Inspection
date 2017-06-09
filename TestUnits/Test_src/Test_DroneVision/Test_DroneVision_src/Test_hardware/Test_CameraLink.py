@@ -89,6 +89,7 @@ class Test_CameraLink(unittest.TestCase, Test_main, TestData):
 		from getpass import getpass
 		from src.DroneVision.DroneVision_src.hardware.imageTools import WriteImage, GetImage, MatplotShow
 		from src.DroneVision.DroneVision_src.imgProcessing.featureDetection.PointDetection import PointDetection
+		from src.DroneVision.DroneVision_src.imgProcessing.frameTools.frameTools import CheckGrayScale, FilterByColor
 		from src.bin.tools import GetTimestamp, CheckDir
 		from src.bin.UserInput.UserInput import UserInput
 
@@ -117,7 +118,7 @@ class Test_CameraLink(unittest.TestCase, Test_main, TestData):
 		else:
 			s_title = 'Slave Frames'
 
-		settings_inst.ChangeSetting('USER_INPUT', 'automatic_mode', not(self.manual_triggering))
+		settings_inst.ChangeSetting('USER_INPUT', 'automatic_mode', self.manual_triggering)
 		getpass('Press enter to start - hold q to quit..')
 		userInput = UserInput(settings_inst.GetSettings('USER_INPUT'))
 		print 'START CAMERA TRIGGER TEST'
@@ -128,12 +129,16 @@ class Test_CameraLink(unittest.TestCase, Test_main, TestData):
 				title = s_title + ' {0}'.format(i)
 				print 'Reading frame..'
 				frame, sl_frame = cameralink.GetFrame()
-				un_frame 	= pointDet.Undistort(frame)
-				un_sl_frame = pointDet.Undistort(sl_frame)
-				print 'Captured frame with shape {0}'.format(frame.shape)
-				MatplotShow([('Frame ({0})'.format(frame.shape), frame), ('UN FRAME ({0})'.format(un_frame.shape), un_frame), ('SL FRAME ({0})'.format(sl_frame.shape), sl_frame), ('UN SL FRAME ({0})'.format(un_sl_frame.shape), un_sl_frame)], title, save_fig=self.save_figs, save_fig_only=self.save_figs_only)
-				WriteImage(frame, test_frame_folder + 'frame_' + str(i))
-				WriteImage(sl_frame, test_frame_folder + 'frame_sl_' + str(i))
+				print 'FRAME SHAPE: ', frame.shape
+				#green_mask, g_frame, g_sl_frame = pointDet.ComputeGreenMask(frame, sl_frame)
+				green_mask, keypoints, descriptors, frame, sl_frame = pointDet.GetPointList(frame, sl_frame, draw=True, ignore_no_blobs_error=True)
+				MatplotShow([('green_mask ({0})'.format(green_mask.shape), green_mask), ('frame ({0})'.format(frame.shape), frame), ('sl_frame ({0})'.format(sl_frame.shape), sl_frame)], title, save_fig=self.save_figs, save_fig_only=self.save_figs_only)
+				#un_frame 	= pointDet.Undistort(frame)
+				#un_sl_frame = pointDet.Undistort(sl_frame)
+				#print 'Captured frame with shape {0}'.format(frame.shape)
+				#MatplotShow([('Frame ({0})'.format(frame.shape), frame), ('UN FRAME ({0})'.format(un_frame.shape), un_frame), ('SL FRAME ({0})'.format(sl_frame.shape), sl_frame), ('UN SL FRAME ({0})'.format(un_sl_frame.shape), un_sl_frame)], title, save_fig=self.save_figs, save_fig_only=self.save_figs_only)
+				#WriteImage(frame, test_frame_folder + 'frame_' + str(i))
+				#WriteImage(sl_frame, test_frame_folder + 'frame_sl_' + str(i))
 				i += 1
 		except:
 			print 'RAISED ERROR'

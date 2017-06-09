@@ -52,9 +52,9 @@ class SettingsConfigured():
 
 		#---- BASIC SETTINGS -----#
 		self._settings['BASIC'] 									= {}
-		self._settings['BASIC']['source_type'] 						= 'CAMERA' 	#Options: 'IMAGE' 'VIDEO' or 'CAMERA' 
+		self._settings['BASIC']['source_type'] 						= 'IMAGE' 	#Options: 'IMAGE' 'VIDEO' or 'CAMERA' 
 		self._settings['BASIC']['reset_calibration'] 				= False
-		self._settings['BASIC']['master_timeout'] 					= 10.0 # Seconds for slave to raise master timeout error if master doesn't send request before timeut. Is only on if no user inputs blocks automatic mode.
+		self._settings['BASIC']['master_timeout'] 					= 20.0 # Seconds for slave to raise master timeout error if master doesn't send request before timeut. Is only on if no user inputs blocks automatic mode.
 		#---- REAL TIME PLOT -----#
 		self._settings['REAL_TIME_PLOT'] 							= {}
 		self._settings['REAL_TIME_PLOT']['real_time_plot_on'] 		= True
@@ -73,11 +73,12 @@ class SettingsConfigured():
 		self._settings['CV']['default_downsampling_divisor'] 		= 4 			# Default downsampling divisor.
 		self._settings['CV']['desired_frame_shape'] 				= (512,612) 	# Desired frame shape to work with, given as a tuple of (height, width). Set to (-1,-1) to not use a desired frame shape, and instead stay fixed to the default downsampling divisor.
 		self._settings['CV']['detector_type'] 						= 0 			# Detector type to use for detecting feature points (blobs) - options: 0, 1, 2, 3 for simple blob detector, ORB, SIFT or SURF (in that order)
+		self._settings['CV']['crop_frames'] 						= True 			# Crop frames according to the difference in fan angle between the laser and camera.
 		#---- DATABASE SETTINGS ----#
 		self._settings['DATABASE'] 									= {}
 		self._settings['DATABASE']['username'] 						= 'root' 					# Set to None to make user type in username at bootup
 		self._settings['DATABASE']['password'] 						= 'odroid' 					# Set to None to make user type in password at bootup
-		self._settings['DATABASE']['database'] 						= 'WindBladeInspection_CV' 			# Set to None to make user type in the database at bootup
+		self._settings['DATABASE']['database'] 						= 'WindTurbine_CV' 			# Set to None to make user type in the database at bootup
 		self._settings['DATABASE']['table_name']					= '' 						# Set to None to make user type in table name at bootup. The table will be appended with a timestamp.
 		self._settings['DATABASE']['output_folder']					= 'DataSamples/samples_output/' 		# Set to None to make user type in output folder at bootup
 		self._settings['DATABASE']['sub_output_folder']				= '' 					# Give the output data folder additional subfolder (f.ex 'sub_folder/'). Set '' for no subfolder. Set to None to make user type in sub folder at bootup
@@ -86,12 +87,12 @@ class SettingsConfigured():
 		self._settings['DATABASE']['store_process_data'] 			= False 	# Store process data to database
 		self._settings['DATABASE']['draw_heading'] 					= True		# Draw headings and information on incoming frames
 		self._settings['DATABASE']['draw_matches'] 					= False 		# Draw stereopsis matches
-		self._settings['DATABASE']['draw_hough_lines']  			= False 		# Draw hough lines 
-		self._settings['DATABASE']['draw_detected_points'] 			= False 		# Draw detected points (draw_hough_lines overwrites this if True)
+		self._settings['DATABASE']['draw_hough_lines']  			= True 		# Draw hough lines 
+		self._settings['DATABASE']['draw_detected_points'] 			= True 		# Draw detected points
 		self._settings['DATABASE']['store_drawn_frames'] 			= False 	# Store drawn frames, next to the original frames.
-		self._settings['DATABASE']['store_frames_as_video'] 		= True 		# Store frames as videos (Separate video for each frame set)
+		self._settings['DATABASE']['store_frames_as_video'] 		= False 		# Store frames as videos (Separate video for each frame set)
 		self._settings['DATABASE']['store_frames_video_fps']		= 1.0		# FPS for stored videos
-		self._settings['DATABASE']['store_frames_as_images'] 		= True 	# Store fames as images (Separate folder for each frame set)
+		self._settings['DATABASE']['store_frames_as_images'] 		= False 	# Store fames as images (Separate folder for each frame set)
 		#---- CAMERA CALIBRATION SETTINGS ----#
 		self._settings['CALIB'] 									= {}
 		self._settings['CALIB']['calib_img_folder_left_cam'] 		= 'DataSamples/calibration_samples/camera_calib_samples/left_camera/'
@@ -126,8 +127,8 @@ class SettingsConfigured():
 		self._settings['BLOB_SCALE']['scale_filtrate'] 				= True
 		#---- MASTER / SLAVE TCP -----#
 		self._settings['TCP']										= {}
-		self._settings['TCP']['master_ip']							= '192.168.137.54'
-		#self._settings['TCP']['master_ip']							= 'localhost'
+		#self._settings['TCP']['master_ip']							= '192.168.137.54'
+		self._settings['TCP']['master_ip']							= 'localhost'
 		self._settings['TCP']['port'] 								= 1991
 		self._settings['TCP']['master_buffer_size']					= 3072 	# Max = 8192
 		self._settings['TCP']['slave_buffer_size']					= 256 	# Min = 128
@@ -137,7 +138,7 @@ class SettingsConfigured():
 		#---- CAMERA SETTINGS ----#
 		self._settings['CAMERA'] 									= {}
 		self._settings['CAMERA']['ptgrey_library'] 					= 'Jordens' # Tag for selecting which library to use. Options - FLIR library: 'FLIR', Jordens library: 'Jordens'. Jordens library is set as default. (Woops.. The FLIR library isn't finished implemented (4/6/17))
-		self._settings['CAMERA']['auto_camera_config'] 				= True # Set true to enable the PtGrey camera to auto calibrate camera settings during process. See CameraLink module for setting initial settings.
+		self._settings['CAMERA']['auto_camera_config'] 				= False # Set true to enable the PtGrey camera to auto calibrate camera settings during process. See CameraLink module for setting initial settings.
 		self._settings['CAMERA']['manual_triggering'] 				= False # Set to True for manual camera triggering. Pauses the program and waits for user to hit enter to continue. 
 		self._settings['CAMERA']['n_frames'] 						= -1 # Set <= 0 for indefinite
 		self._settings['CAMERA']['ptg_triggerPin'] 					= 2  # Set -1 to disable - trigger pin on the Ptg. Usually GPIO3 (Purple wire)
@@ -145,20 +146,21 @@ class SettingsConfigured():
 		self._settings['CAMERA']['camera_triggerPin'] 				= 22 # trigger pin on the odroid to the camera
 		self._settings['CAMERA']['ptg_recv_frame_timeout']			= 1.5
 		self._settings['CAMERA']['ptg_use_color_frames'] 			= True # Set Ptg to capture color frames
+		self._settings['CAMERA']['fan_angle'] 						= 60.0 # fan angle of the camera in cartesian degrees (actuall camera fan angle is 54.72, but increasing it to make sure all points covers the whole image)
 		#----- LASER SETTINGS ----#
 		self._settings['LASER'] 									= {}
 		self._settings['LASER']['laser_triggerPin'] 				= 26 # Trigger pin on the odroid to the laser
+		self._settings['LASER']['fan_angle'] 						= 28.2 # fan angle of the camera in cartesian degrees
 		#---- VIDEO SETTINGS -----#
 		self._settings['VIDEO'] 									= {}
-		#self._settings['VIDEO']['input_folder']						= 'DataSamples/final_test_samples/stereopsis/dist_124cm_164cm/'
-		self._settings['VIDEO']['input_folder']						= 'DataSamples/final_test_samples/edge_detection/blade/blade_window/'
+		self._settings['VIDEO']['input_folder']						= 'DataSamples/live_test_sample/'
 		self._settings['VIDEO']['left_video']						= 'left_camera/recordings/original_left.avi' 			# Master is to the left
 		self._settings['VIDEO']['left_sl_video']					= 'left_camera/recordings/original_sl_left.avi' 
 		self._settings['VIDEO']['right_video']						= 'right_camera/recordings/original_right.avi'			# Slave is to the right
 		self._settings['VIDEO']['right_sl_video']					= 'right_camera/recordings/original_sl_right.avi'
 		#---- IMAGE SETTINGS -----#
 		self._settings['IMAGE'] 									= {}
-		self._settings['IMAGE']['input_folder']						= 'DataSamples/final_test_samples/edge_detection/blade/blade/'
+		self._settings['IMAGE']['input_folder']						= 'DataSamples/live_test_sample/'
 		self._settings['IMAGE']['left_images']						= 'left_camera/recordings/original_left_frames/' 			# Master is to the left (May also be list of filenames - consistent with following input images)
 		self._settings['IMAGE']['left_sl_images']					= 'left_camera/recordings/original_sl_left_frames/' 
 		self._settings['IMAGE']['right_images']						= 'right_camera/recordings/original_right_frames/'	# Slave is to the right
@@ -198,6 +200,7 @@ class SettingsConfigured():
 		settings_info['CV']['default_downsampling_divisor'] 		= "Options: (int) - even number >= 1 giving the default divisor for downsampling incoming frames."
 		settings_info['CV']['desired_frame_shape'] 					= "Desired frame shape to work with. Given as a tuple of (height, width). Set to (-1,-1) to not use a desired frame shape, and instead stay fixed to the default downsampling divisor."
 		settings_info['CV']['detector_type']						= "Detector type to use for detecting feature points (blobs). Options (int): 0, 1, 2, 3 for simple blob detector, ORB, SIFT or SURF (in that order). Simple blob detector (option 0) is recommended."
+		settings_info['CV']['crop_frames'] 							= "Options True/False. Crop frames according to the difference in fan angle between the laser and camera."
 		#---- DATABASE SETTINGS ----#
 		settings_info['DATABASE'] 									= {}
 		settings_info['DATABASE']['username'] 						= "Database username (mysql), options: None/(string) - Set to None to make user type in username at startup"
@@ -212,7 +215,7 @@ class SettingsConfigured():
 		settings_info['DATABASE']['draw_heading'] 					= "Draw heading and detected blade edges, options: True/False"
 		settings_info['DATABASE']['draw_matches'] 					= "Draw feature point matches from the stereopsis system, options: True/False"
 		settings_info['DATABASE']['draw_hough_lines']  				= "Draw hough lines grid and bounded lines, options: True/False"
-		settings_info['DATABASE']['draw_detected_points'] 			= "Draw detected feature points (draw_hough_lines draws on the same frame if it's set to True), options: True/False"
+		settings_info['DATABASE']['draw_detected_points'] 			= "Draw detected feature points, options: True/False"
 		settings_info['DATABASE']['store_drawn_frames'] 			= "Store drawn frames, next to the original frames, options: True/False. Original frames (with and without structured light) are stored if either store_frames_as_video or store_frames_as_images is set to True."
 		settings_info['DATABASE']['store_frames_as_video'] 			= "Store frames as videos (Separate video for each frame set), options: True/False"
 		settings_info['DATABASE']['store_frames_video_fps']			= "FPS for stored videos, options: (float)"
@@ -269,9 +272,11 @@ class SettingsConfigured():
 		settings_info['CAMERA']['camera_triggerPin'] 				= "GPIO pin on the odroid for triggering the PtGrey, options (int)."
 		settings_info['CAMERA']['ptg_recv_frame_timeout']			= "Timeout to receive a captured frames from the PtGrey, options (float)"
 		settings_info['CAMERA']['ptg_use_color_frames'] 			= "Set Ptg to capture color frames, options: True/False"
+		settings_info['CAMERA']['fan_angle']						= "Fan angle of the camera in cartesian degrees, options (float)"
 		#----- LASER SETTINGS ----#
 		settings_info['LASER'] 										= {}
 		settings_info['LASER']['laser_triggerPin'] 					= "GPIO pin on the odroid to turn the laser On/Off, options: (int)"
+		settings_info['LASER']['fan_angle']							= "Fan angle of the laser in cartesian degrees, options (float)"
 		#---- VIDEO SETTINGS -----#
 		settings_info['VIDEO'] 										= {}
 		settings_info['VIDEO']['input_folder']						= "Top folder for the given video sample. A video sample can be obtained be turning on video storing during a real process. Following video settings must be consistent. Options: (string) - folder path as 'video_sample/'"

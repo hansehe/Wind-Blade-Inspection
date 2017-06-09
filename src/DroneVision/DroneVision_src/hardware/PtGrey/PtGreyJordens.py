@@ -36,6 +36,7 @@ class PtGreyJordens(object):
 		self.__capture_timeout 		= capture_timeout
 		self.__fc2 					= None
 		self.__fc2_camera 			= None
+
 		self.__camera_connected 	= False
 		self.__capturing 			= False
 		self.__error_flag 			= False
@@ -80,6 +81,17 @@ class PtGreyJordens(object):
 			warnings.simplefilter('always')
 			warnings.warn(str(err), Warning)
 			warnings.simplefilter('default')
+
+	def ToggleTriggerPin(self, toggle_delay=0.0):
+		'''
+		 @brief Toggle camera trigger pin to make camera capture frame
+
+		 @param toggle_delay (float)
+		'''
+		if self.__mc_trigger_pin.GetPin() >= 0:
+			self.__mc_trigger_pin.TogglePin()
+			if toggle_delay > 0:
+				time.sleep(toggle_delay)
 
 	def CaptureFrame(self, skip_pin_trig=False, skip_manual_trig=False):
 		'''
@@ -203,16 +215,16 @@ class PtGreyJordens(object):
 	def RestartCapture(self, n_restart=0, max_restarts=2):
 		'''
 		 @brief Restart capture due to an api error
+		 	Please run StartCapture() after restarting
 
 		 @param max_restarts (maximum number of restarts before failure raise (default=2))
 		'''
 		self.DisconnectCamera()
+		time.sleep(0.1)
 		try:
 			self.ConnectCamera()
 			if self.__mc_trigger_pin.GetPin() >= 0 and self.__ptgrey_trigger_pin >= 0:
-				self.SetTrigger(self.__ptgrey_trigger_pin, on_off=False, polarity=False, mode=0)
 				self.SetTrigger(self.__ptgrey_trigger_pin, on_off=True, polarity=False, mode=0)
-			self.StartCapture()
 		except:
 			if n_restart < max_restarts:
 				self.RestartCapture(n_restart=n_restart+1)

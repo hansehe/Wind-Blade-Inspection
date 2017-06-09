@@ -45,22 +45,23 @@ class DroneSlave(Slave, DroneVision, Settings, DataBase):
 		Slave.__init__(self, self.GetSettings('TCP'), self)
 		DroneVision.__init__(self, False, self.GetSettings(), self.__realTimePlot)
 		DataBase.__init__(self, self, self.GetSettings('DATABASE'))
-		self.__master_timeout 				= self.GetSettings('BASIC', 'master_timeout')
-		self.__new_frame_ready 				= False
-		self.__store_db 					= False
-		self.__prepared_frame_content 	 	= None
-		self.__prepare_lock 	 			= threading.Lock()
-		self.__timestamp 		 			= None
-		self.__slave_calibrated 		 	= False
-		self.__error_flag 					= False
-		self.__process_new_frame_flag 		= False
-		self.__master_flag 					= None
-		self.__force_calibration			= False
-		self.__run_calibrate_cv_flag 		= False
-		self.__new_traded_frame_flag 		= False 
-		self.__traded_frame 				= None
-		self.__traded_frame_lock 			= threading.Lock()
-		self.__slave_started_flag 			= False
+		self.__master_timeout 						= self.GetSettings('BASIC', 'master_timeout')
+		self.__new_frame_ready 						= False
+		self.__store_db 							= False
+		self.__prepared_frame_content 	 			= None
+		self.__prepare_lock 	 					= threading.Lock()
+		self.__timestamp 		 					= None
+		self.__slave_calibrated 		 			= False
+		self.__error_flag 							= False
+		self.__process_new_frame_flag 				= False
+		self.__master_flag 							= None
+		self.__force_stereo_vision_calibration		= False
+		self.__force_blob_calibration 				= False
+		self.__run_calibrate_cv_flag 				= False
+		self.__new_traded_frame_flag 				= False 
+		self.__traded_frame 						= None
+		self.__traded_frame_lock 					= threading.Lock()
+		self.__slave_started_flag 					= False
 		self.__calibrate_stereopsis_session 			= False # Default
 		self.__calibrate_blob_scale_detector_session 	= False # Default
 
@@ -81,7 +82,6 @@ class DroneSlave(Slave, DroneVision, Settings, DataBase):
 		'''
 		 @brief Run slave indefinitely. Master controls getFrame/stop/restart.
 		'''
-		store_frames = self.GetSettings('DATABASE', 'store_frames_as_video') or self.GetSettings('DATABASE', 'store_frames_as_images')
 		while not(self.GetTerminate()):
 			if self.__run_calibrate_cv_flag:
 				self.__run_calibrate_cv_flag = False
@@ -101,12 +101,7 @@ class DroneSlave(Slave, DroneVision, Settings, DataBase):
 				with self.__prepare_lock:
 					frame_content = self.__prepared_frame_content
 
-				#----------- STORE IN DATABASE ----------#
-				if store_frames:
-					self.SetProcessFrame('original_right', frame_content[0])
-					self.SetProcessFrame('original_sl_right', frame_content[1])
-				self.RecordData(record_frames=store_frames, insert_to_database=False, print_progress=True)
-				#----------------------------------------#
+				self.RecordData(record_frames=False, insert_to_database=False, print_progress=True)
 
 				#--------- SHOW RESULTS REALTIME --------#
 				if self.GetSettings('REAL_TIME_PLOT', 'real_time_plot_on'):
@@ -159,8 +154,8 @@ class DroneSlave(Slave, DroneVision, Settings, DataBase):
 			calib_folder = self.GetSettings('BLOB_SCALE', 'scale_calib_folder')
 			n_saved_calib_frame_sets += self.RunSlaveCalibration(calib_folder, False)
 		if (calibrate_stereopsis or calibrate_blob_scale_detector) and not(self.GetSettings('BASIC', 'reset_calibration')):
-			force_calibration = self.WaitForMasterFlag()
-			self.__force_calibration = force_calibration
+			self.__force_stereo_vision_calibration 	= self.WaitForMasterFlag()
+			self.__force_blob_calibration 			= self.WaitForMasterFlag()
 		if self.GetSettings('REAL_TIME_PLOT', 'real_time_plot_on'):
 			self.__realTimePlot(reset=True)
 
@@ -296,6 +291,10 @@ class DroneSlave(Slave, DroneVision, Settings, DataBase):
 		if not(self.CheckDroneVisionFinished()):
 			try:
 				original_frame, original_sl_frame = self.GetRawFrames()
+				if self.GetSettings('DATABASE', 'store_frames_as_video') or self.GetSettings('DATABASE', 'store_frames_as_images'): # Store frames here to relieve memory. The frames are deleted as soon as possible.
+					self.SetProcessFrame('original_right', original_frame)
+					self.SetProcessFrame('original_sl_right', original_sl_frame)
+					self.RecordData(record_frames=True, insert_to_database=False)
 				tmp_frame_content = self.GetProcessedFrame(original_frame=original_frame, original_sl_frame=original_sl_frame)
 			except (DroneVisionError, PtGreyError), err:
 				self.__error_flag = True
@@ -385,7 +384,7 @@ class DroneSlave(Slave, DroneVision, Settings, DataBase):
 		 @brief Run calibrate CV.
 		'''
 		self.CheckRunSlaveCalibration(self.__calibrate_stereopsis_session, self.__calibrate_blob_scale_detector_session)
-		self.CalibratePointDetection(force_calibration=self.__force_calibration)
+		self.CalibratePointDetection(force_calibration=self.__force_stereo_vision_calibration, force_blob_calibration=self.__force_blob_calibration)
 		self.__slave_calibrated = True
 
 	def GetSlaveReady(self):

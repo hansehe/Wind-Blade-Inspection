@@ -74,7 +74,7 @@ class Heading(EdgeHeading):
 		self.__current_blade_heading 	= blade_heading
 		self.__current_tip_heading 		= tip_heading
 
-	def ComputeHeading(self, frame, boundary_hough_lines, draw_possible_edge_headings=False, draw_headings=False, draw_elliptical_error_arrow=True, draw_min_rho=True):
+	def ComputeHeading(self, frame, boundary_hough_lines, draw_possible_edge_headings=False, draw_headings=False, draw_elliptical_error_arrow=False, draw_min_rho=True):
 		'''
 		 @brief Compute heading according to the boundary_hough_lines.
 
@@ -129,9 +129,9 @@ class Heading(EdgeHeading):
 			if len(selected_blade_edge_headings) == 1 and draw_elliptical_error_arrow: # Following a single edge
 				frame = self.DrawErrorArrow(frame, selected_blade_edge_headings[0], draw_min_rho=draw_min_rho, rho_min_diag_perc=self.__rho_min_diag_perc, color=(153,0,0), min_rho_color=(102,0,0)) # DARK RED
 			if tip_or_root_detected:
-				frame = self.DrawHeading(frame, selected_tip_or_root_heading, color=(255,0,0), line_thick=10)	#RED
+				frame = self.DrawHeading(frame, selected_tip_or_root_heading, color=(255,0,0))	#RED
 			for edge_heading in selected_blade_edge_headings:
-				frame = self.DrawHeading(frame, edge_heading, color=(255,255,0), line_thick=7) 					#YELLOW
+				frame = self.DrawHeading(frame, edge_heading, color=(255,255,0)) 					#YELLOW
 			frame = self.DrawHeading(frame, selected_blade_heading, color=(255,128,0))							#ORANGE
 
 		return selected_blade_heading, selected_tip_or_root_heading, tip_or_root_detected, frame

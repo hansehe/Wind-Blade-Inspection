@@ -66,6 +66,12 @@ class UserInput():
         '''
         self.__terminate = True
 
+    def ResetTermination(self):
+        '''
+         @brief Reset the force termination key
+        '''
+        self.__terminate = False
+
     def CheckTerminated(self):
         '''
          @brief Check if user input is terminated

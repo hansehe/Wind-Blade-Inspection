@@ -8,7 +8,7 @@ import cv2, math, operator
 import numpy as np
 
 from Settings.Exceptions import DroneVisionError
-from src.DroneVision.DroneVision_src.imgProcessing.frameTools.frameTools import PyrDown, GetShape
+from src.DroneVision.DroneVision_src.imgProcessing.frameTools.frameTools import PyrDown, GetShape, CropFrame, CheckColor, CheckGrayScale, FilterByColor
 from src.DroneVision.DroneVision_src.hardware.imageTools import MatplotShow
 from src.DroneVision.DroneVision_src.imgProcessing.CameraCalibration.StereoVision import StereoVision
 
@@ -50,7 +50,7 @@ from src.DroneVision.DroneVision_src.imgProcessing.CameraCalibration.StereoVisio
 '''
 class BlobDetector(StereoVision):
 	def __init__(self, me_master, calib_settings_inst, default_downsampling_divisor, desired_frame_shape, reset, detector_type=0, plot_figure=None):
-		'''COSNTRUCTOR'''
+		'''CONSTRUCTOR'''
 		StereoVision.__init__(self, me_master, calib_settings_inst, reset, plot_figure=plot_figure)
 		self.__default_downsampling_divisor = default_downsampling_divisor
 		self.__desired_frame_shape 		= desired_frame_shape
@@ -58,6 +58,8 @@ class BlobDetector(StereoVision):
 
 		# Setup SimpleBlobDetector parameters.
 		self.__blob_params = cv2.SimpleBlobDetector_Params()
+
+		# See this page for explanation: https://www.learnopencv.com/blob-detection-using-opencv-python-c/
 		 
 		# Change thresholds
 		self.__blob_params.minThreshold = 1
@@ -72,19 +74,23 @@ class BlobDetector(StereoVision):
 		 
 		# Filter by Area.
 		self.__blob_params.filterByArea = False
-		self.__blob_params.minArea = 10
+		self.__blob_params.minArea = 0
+		self.__blob_params.maxArea = 10
 		 
 		# Filter by Circularity
 		self.__blob_params.filterByCircularity = False
-		self.__blob_params.minCircularity = 0.01
+		self.__blob_params.minCircularity = 0.8
+		self.__blob_params.maxCircularity = 1.0
 		 
 		# Filter by Convexity
 		self.__blob_params.filterByConvexity = False
-		self.__blob_params.minConvexity = 0.5
+		self.__blob_params.minConvexity = 0.8
+		self.__blob_params.maxConvexity = 1.0
 		 
 		# Filter by Inertia
 		self.__blob_params.filterByInertia = False
-		self.__blob_params.minInertiaRatio = 0.02
+		self.__blob_params.minInertiaRatio = 0.8
+		self.__blob_params.maxInertiaRatio = 1.0
 		 
 		# Create a detector with the parameters
 		self.__keypoint_detector 								= self.ComputeFeatureDetector(self.__blob_params, self.__detector_type)
@@ -174,24 +180,32 @@ class BlobDetector(StereoVision):
 		if not(self.__descriptor_available):
 			raise DroneVisionError('feature_descriptor_not_available_error_msg')
 
-	def CalibrateBlobDetector(self, min_distance_between_blobs):
+	def CalibrateBlobDetector(self, min_distance_between_blobs, mean_point_size):
 		'''
 		 @brief Calibrate minimum distance between blobs using a standard frame with and without structural light points.
 
 		 @param min_distance_between_blobs (Minimum distance between blobs estimate)
+		 @param mean_point_size (Minimum distance between blobs estimate)
 		'''
 		self.__min_distance_between_blobs 		= min_distance_between_blobs
 		self.__blob_params.minDistBetweenBlobs 	= min_distance_between_blobs*0.5
+
+		# Turn on filter by Area using the mean point size.
+		self.__blob_params.filterByArea = False
+		self.__blob_params.minArea = mean_point_size*0.1
+		self.__blob_params.maxArea = mean_point_size*3.5
+
 		# Recreate a keypoint detector with the new parameters
 		self.__keypoint_detector = self.ComputeFeatureDetector(self.__blob_params, self.__detector_type)
 		self.__minDistBetweenBlobs_calibrated = True
 
-	def DetectBlobs(self, frame, compute_descriptors=False):
+	def DetectBlobs(self, frame, compute_descriptors=False, ignore_no_blobs_error=False):
 		'''
 		 @brief Detect blobs (points) in a frame.
 
 		 @param frame
 		 @param compute_descriptors (Default=False)
+		 @param ignore_no_blobs_error (True/False)
 
 		 @return keypoints, descriptors (Returns keypoints = blob keypoints as a list, descriptors = blob descriptors as a list
 		 	Position and size of blob is found by:
@@ -207,7 +221,7 @@ class BlobDetector(StereoVision):
 			keypoints, descriptors = self.__descriptor_detector.compute(frame, keypoints=keypoints)
 		else:
 			descriptors = np.zeros(len(keypoints))
-		if len(keypoints) == 0:
+		if len(keypoints) == 0 and not(ignore_no_blobs_error):
 			raise DroneVisionError('no_blobs_error_msg')
 		return keypoints, descriptors
 
@@ -227,21 +241,24 @@ class BlobDetector(StereoVision):
 		'''
 		return self.__desired_frame_shape
 
-	def GetPointList(self, frame, sl_frame, undistort=True, concatenate_points=False, compute_descriptors=False, draw=False):
+	def GetPointList(self, cl_frame, cl_sl_frame, undistort=True, concatenate_points=False, compute_descriptors=False, draw=False, crop_frames=False, crop_frame_divisor=0.5, ignore_no_blobs_error=False):
 		'''
 		 @brief Steps for computing point list from a normal frame and structured light frame.
 		 		Undistorts (at request) and scales down the frames. 
 		
-		 @param frame (normal frame (grayscale) - raw (not manipulated))
-		 @param sl_frame (structured light frame (grayscale) - raw (not manipulated))
+		 @param frame (normal frame (color) - raw (not manipulated))
+		 @param sl_frame (structured light frame (color) - raw (not manipulated))
 		 @param undistort (True/False on undistorting frames (default=True))
 		 @param concatenate_points (True/False on concatenating close points (default=False))
 		 @param compute_descriptors (default=False)
 		 @param draw (True/False)
-
-		 @return delta_frame, keypoints, descriptors, frame, sl_frame 
+		 @param crop_frames (True/False for cropping the frames to match the fan angle of the laser (default=False))
+		 @param crop_frame_divisor (0 < Float <= 1  - divisor for cropping frames. F.ex 0.5 will crop the frame to half the size around the frame center.)
+		 @param ignore_no_blobs_error (True/False)
+		 
+		 @return green_mask, keypoints, descriptors, frame, sl_frame 
 		 		(Returns: 
-		 		delta_frame = frame with highlighted points above threshold. 
+		 		green_mask = frame with highlighted structured light points. 
 				keypoints = all point positions above threshold (2D numpy array = each row is a point position [x, y]).
 				descriptors = point descriptors
 				frame = updated frame
@@ -250,53 +267,111 @@ class BlobDetector(StereoVision):
 		'''
 		pyr_down_divisor 	= self.GetDefaultPyrDownDivisor()
 		desired_frame_shape = self.GetDesiredFrameShape()
+		cl_frame 		= PyrDown(cl_frame, pyr_down_divisor, desired_frame_shape)
+		cl_sl_frame 	= PyrDown(cl_sl_frame, pyr_down_divisor, desired_frame_shape)
 
-		frame 			 = PyrDown(frame, pyr_down_divisor, desired_frame_shape)
-		sl_frame 		 = PyrDown(sl_frame, pyr_down_divisor, desired_frame_shape)
+		green_mask, frame, sl_frame = self.ComputeGreenMask(cl_frame, cl_sl_frame)
+
+		green_mask = self.EnhanceGreenMask(green_mask)
 
 		if undistort:
 			frame 		= self.Undistort(frame)
 			sl_frame 	= self.Undistort(sl_frame)
+			green_mask 	= self.Undistort(green_mask)
 
-		delta_frame, keypoints, descriptors = self.DeltaFrame(frame, sl_frame, concatenate_points=concatenate_points, compute_descriptors=compute_descriptors, draw=draw)
-		return delta_frame, keypoints, descriptors, frame, sl_frame
+		if crop_frames:
+			frame 		= CropFrame(frame, crop_frame_divisor)
+			sl_frame 	= CropFrame(sl_frame, crop_frame_divisor)
+			green_mask 	= CropFrame(green_mask, crop_frame_divisor)
 
-	def DeltaFrame(self, frame, sl_frame, threshold=50, concatenate_points=False, compute_descriptors=False, draw=False):
+		green_mask, keypoints, descriptors = self.DetectFeatures(green_mask, concatenate_points=concatenate_points, compute_descriptors=compute_descriptors, draw=draw, ignore_no_blobs_error=ignore_no_blobs_error)
+		return green_mask, keypoints, descriptors, frame, sl_frame
+
+	def ComputeGreenMask(self, cl_frame, cl_sl_frame, hvs_cl_threshold=30):
+		'''
+		 @brief Compute mask from green structured light laser
+
+		 @param cl_frame (colored normal frame)
+		 @param cl_sl_frame (colored structured light frame)
+		 @param hvs_cl_threshold (Threshold for the green color)
+
+		 @return green_mask, g_frame, g_sl_frame
+		'''
+		delta_frame, g_frame, g_sl_frame = self.ComputeDeltaFrame(cl_frame, cl_sl_frame)
+		if len(cl_sl_frame.shape) == 3:
+			cl_sl_frame = cv2.bitwise_and(cl_sl_frame, cl_sl_frame, mask=delta_frame)
+			green_mask 	= FilterByColor(cl_sl_frame, hvs_cl_threshold=hvs_cl_threshold)
+		else:
+			green_mask = delta_frame
+		cl_sl_frame = PyrDown(cl_sl_frame, self.GetDefaultPyrDownDivisor(), self.GetDesiredFrameShape())
+		return green_mask, g_frame, g_sl_frame
+
+	def EnhanceGreenMask(self, green_mask, erode_kernel_size=3, erode_iterations=0, dilate_kernel_size=3, dilate_iterations=0):
+		'''
+		 @brief Enhance green mask by gaussian blur, erosion and dilation
+	
+		 @param erode_kernel_size (Kernel size for erosion)
+		 @param dilate_kernel_size (Kernel size for dilation)
+		 @param erode_iterations (iterations for erosion)
+		 @param dilate_iterations (iterations for dilation)
+
+		 @return green_mask
+		'''
+		erode_kernel 	= np.ones((erode_kernel_size,erode_kernel_size), dtype=np.uint8)
+		dilate_kernel 	= np.ones((dilate_kernel_size,dilate_kernel_size), dtype=np.uint8)
+		green_mask 		= cv2.GaussianBlur(green_mask, (dilate_kernel_size,dilate_kernel_size), 0)
+		if erode_iterations:
+			green_mask 		= cv2.erode(green_mask, erode_kernel, iterations=erode_iterations)
+		if dilate_iterations:
+			green_mask 		= cv2.dilate(green_mask, dilate_kernel, iterations=dilate_iterations)
+		green_mask[green_mask > 0] = 255
+		return green_mask
+
+	def ComputeDeltaFrame(self, frame, sl_frame, threshold=10):
 		'''
 		 @brief Computes the delta (change) between the frame without structured light, and with structured light.
 
 		 @param frame Frame without structured light.
 		 @param sl_frame Frame with structured light.
-		 @param threshold Simple high pass filter which removes all pixels below the threshold value and sets all pixels above the threshold to 255.
+
+		 @return delta_frame, g_frame, g_sl_frame
+		'''
+		origin_type = frame.dtype
+		g_frame 	= CheckGrayScale(frame).astype(int)
+		g_sl_frame 	= CheckGrayScale(sl_frame).astype(int)
+
+		delta_frame = np.abs(g_frame - g_sl_frame)
+		delta_frame = delta_frame.astype(origin_type)
+
+		g_frame 	= g_frame.astype(origin_type)
+		g_sl_frame 	= g_sl_frame.astype(origin_type)
+		delta_frame = cv2.GaussianBlur(delta_frame,(5,5),0)
+		delta_frame[delta_frame < threshold] = 0
+		delta_frame[delta_frame >= threshold] = 255
+
+		return delta_frame, g_frame, g_sl_frame
+
+	def DetectFeatures(self, green_mask, concatenate_points=False, compute_descriptors=False, draw=False, ignore_no_blobs_error=False):
+		'''
+		 @brief Detect feature points
+
+		 @param green_mask
 		 @param concatenate_points (True for concatenating close points which are within a close distance (default=False))
 		 @param compute_descriptors (default=False)
 		 @param draw Draw detected points on frame
+		 @param ignore_no_blobs_error (True/False)
 
-		 @return delta_frame, keypoints, descriptors (Returns delta_frame = frame with highlighted points above threshold. 
+		 @return green_mask, keypoints, descriptors (Returns green_mask = frame with highlighted structured light points. 
 										keypoints = all point positions above threshold (list of keypoints).
 										descriptors = point descriptors)
 		'''
-		origin_type = frame.dtype
-		frame 		= frame.astype(int)
-		sl_frame 	= sl_frame.astype(int)
-		delta_frame = np.abs(frame - sl_frame)
-		low_indices = delta_frame < threshold
-		delta_frame[low_indices] = 0
-		max_indices = delta_frame >= threshold
-		delta_frame[max_indices] = 255
-
-		delta_frame = delta_frame.astype(origin_type)
-		frame 		= frame.astype(origin_type)
-		sl_frame 	= sl_frame.astype(origin_type)
-
-		keypoints, descriptors	= self.DetectBlobs(delta_frame, compute_descriptors=compute_descriptors)
+		keypoints, descriptors	= self.DetectBlobs(green_mask, compute_descriptors=compute_descriptors, ignore_no_blobs_error=ignore_no_blobs_error)
 		if concatenate_points:
 			keypoints, descriptors = self.ConcatenateClosePoints(keypoints, descriptors)
 
 		if draw:
-			delta_frame = self.DrawKeypoints(delta_frame, keypoints)
-
-		return delta_frame, keypoints, descriptors
+			green_mask = self.DrawKeypoints(green_mask, keypoints)
+		return green_mask, keypoints, descriptors
 
 	def ConcatenateClosePoints(self, keypoints, descriptors, copy_to_new_keypoints=False):
 		'''
@@ -351,7 +426,7 @@ class BlobDetector(StereoVision):
 			conc_points_desc.append(point_desc)
 		return conc_points, np.array(conc_points_desc, dtype=descriptors_type)
 
-	def DrawKeypoints(self, frame, keypoints, create_new_frame=False, color=(255,0,0), draw_rich_keypoints=True):
+	def DrawKeypoints(self, frame, keypoints, create_new_frame=False, color=(255,0,0), draw_rich_keypoints=False):
 		'''
 		 @brief Draw keypoints on frame
 			
@@ -367,9 +442,10 @@ class BlobDetector(StereoVision):
 		if draw_rich_keypoints:
 			flags += cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS
 		if create_new_frame:
-			kp_frame = np.zeros(GetShape(frame), dtype=np.uint8)
+			kp_frame = np.array(frame)
 		else:
 			kp_frame = frame
 			flags 	+= cv2.DRAW_MATCHES_FLAGS_DRAW_OVER_OUTIMG
+		kp_frame = CheckColor(kp_frame)
 		kp_frame = cv2.drawKeypoints(kp_frame, keypoints, kp_frame, color=color, flags=flags)
 		return kp_frame

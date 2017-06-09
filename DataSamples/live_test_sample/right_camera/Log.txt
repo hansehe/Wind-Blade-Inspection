@@ -1,0 +1,636 @@
+#----------------- DRONEVISION STARTING -----------------#
+# Hardware source: 		 CAMERA
+# Output folder:
+# 	../WindTurbineInspection_data/samples_output/FINAL_TESTS/2016_02_11__17_05_20/right_camera/
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 2.74 sec
+# Processed frames: 		 1
+# Frame processing delay: 	 2.74 sec
+# Average delay per frame: 	 2.74 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 6.02 sec
+# Processed frames: 		 2
+# Frame processing delay: 	 3.28 sec
+# Average delay per frame: 	 3.01 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 9.25 sec
+# Processed frames: 		 3
+# Frame processing delay: 	 3.23 sec
+# Average delay per frame: 	 3.08 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 13.01 sec
+# Processed frames: 		 4
+# Frame processing delay: 	 3.76 sec
+# Average delay per frame: 	 3.25 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 15.40 sec
+# Processed frames: 		 5
+# Frame processing delay: 	 2.39 sec
+# Average delay per frame: 	 3.08 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 17.62 sec
+# Processed frames: 		 6
+# Frame processing delay: 	 2.22 sec
+# Average delay per frame: 	 2.94 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 19.80 sec
+# Processed frames: 		 7
+# Frame processing delay: 	 2.17 sec
+# Average delay per frame: 	 2.83 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 22.12 sec
+# Processed frames: 		 8
+# Frame processing delay: 	 2.33 sec
+# Average delay per frame: 	 2.77 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 25.02 sec
+# Processed frames: 		 9
+# Frame processing delay: 	 2.90 sec
+# Average delay per frame: 	 2.78 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 27.57 sec
+# Processed frames: 		 10
+# Frame processing delay: 	 2.54 sec
+# Average delay per frame: 	 2.76 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 30.10 sec
+# Processed frames: 		 11
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.74 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 32.67 sec
+# Processed frames: 		 12
+# Frame processing delay: 	 2.57 sec
+# Average delay per frame: 	 2.72 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 35.18 sec
+# Processed frames: 		 13
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.71 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 37.77 sec
+# Processed frames: 		 14
+# Frame processing delay: 	 2.59 sec
+# Average delay per frame: 	 2.70 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 40.31 sec
+# Processed frames: 		 15
+# Frame processing delay: 	 2.54 sec
+# Average delay per frame: 	 2.69 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 42.82 sec
+# Processed frames: 		 16
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.68 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 45.70 sec
+# Processed frames: 		 17
+# Frame processing delay: 	 2.87 sec
+# Average delay per frame: 	 2.69 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 48.03 sec
+# Processed frames: 		 18
+# Frame processing delay: 	 2.33 sec
+# Average delay per frame: 	 2.67 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 50.51 sec
+# Processed frames: 		 19
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.66 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 53.03 sec
+# Processed frames: 		 20
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.65 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 55.72 sec
+# Processed frames: 		 21
+# Frame processing delay: 	 2.70 sec
+# Average delay per frame: 	 2.65 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 58.21 sec
+# Processed frames: 		 22
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.65 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 60.62 sec
+# Processed frames: 		 23
+# Frame processing delay: 	 2.40 sec
+# Average delay per frame: 	 2.64 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 63.29 sec
+# Processed frames: 		 24
+# Frame processing delay: 	 2.67 sec
+# Average delay per frame: 	 2.64 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 65.89 sec
+# Processed frames: 		 25
+# Frame processing delay: 	 2.60 sec
+# Average delay per frame: 	 2.64 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 68.59 sec
+# Processed frames: 		 26
+# Frame processing delay: 	 2.70 sec
+# Average delay per frame: 	 2.64 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 71.06 sec
+# Processed frames: 		 27
+# Frame processing delay: 	 2.46 sec
+# Average delay per frame: 	 2.63 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 73.49 sec
+# Processed frames: 		 28
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.62 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 76.00 sec
+# Processed frames: 		 29
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.62 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 78.67 sec
+# Processed frames: 		 30
+# Frame processing delay: 	 2.67 sec
+# Average delay per frame: 	 2.62 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 81.05 sec
+# Processed frames: 		 31
+# Frame processing delay: 	 2.38 sec
+# Average delay per frame: 	 2.61 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 83.49 sec
+# Processed frames: 		 32
+# Frame processing delay: 	 2.43 sec
+# Average delay per frame: 	 2.61 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 85.96 sec
+# Processed frames: 		 33
+# Frame processing delay: 	 2.47 sec
+# Average delay per frame: 	 2.60 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 88.44 sec
+# Processed frames: 		 34
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.60 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 90.99 sec
+# Processed frames: 		 35
+# Frame processing delay: 	 2.56 sec
+# Average delay per frame: 	 2.60 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 93.41 sec
+# Processed frames: 		 36
+# Frame processing delay: 	 2.42 sec
+# Average delay per frame: 	 2.59 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 95.90 sec
+# Processed frames: 		 37
+# Frame processing delay: 	 2.48 sec
+# Average delay per frame: 	 2.59 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 98.35 sec
+# Processed frames: 		 38
+# Frame processing delay: 	 2.45 sec
+# Average delay per frame: 	 2.59 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 100.86 sec
+# Processed frames: 		 39
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.59 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 103.27 sec
+# Processed frames: 		 40
+# Frame processing delay: 	 2.41 sec
+# Average delay per frame: 	 2.58 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 105.72 sec
+# Processed frames: 		 41
+# Frame processing delay: 	 2.45 sec
+# Average delay per frame: 	 2.58 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 108.18 sec
+# Processed frames: 		 42
+# Frame processing delay: 	 2.46 sec
+# Average delay per frame: 	 2.58 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 110.56 sec
+# Processed frames: 		 43
+# Frame processing delay: 	 2.38 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 113.02 sec
+# Processed frames: 		 44
+# Frame processing delay: 	 2.46 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 115.46 sec
+# Processed frames: 		 45
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 117.90 sec
+# Processed frames: 		 46
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.56 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 120.30 sec
+# Processed frames: 		 47
+# Frame processing delay: 	 2.39 sec
+# Average delay per frame: 	 2.56 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 122.75 sec
+# Processed frames: 		 48
+# Frame processing delay: 	 2.46 sec
+# Average delay per frame: 	 2.56 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 125.14 sec
+# Processed frames: 		 49
+# Frame processing delay: 	 2.38 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 127.66 sec
+# Processed frames: 		 50
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 130.05 sec
+# Processed frames: 		 51
+# Frame processing delay: 	 2.40 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 132.44 sec
+# Processed frames: 		 52
+# Frame processing delay: 	 2.38 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 135.02 sec
+# Processed frames: 		 53
+# Frame processing delay: 	 2.58 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 137.47 sec
+# Processed frames: 		 54
+# Frame processing delay: 	 2.45 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 139.99 sec
+# Processed frames: 		 55
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 142.36 sec
+# Processed frames: 		 56
+# Frame processing delay: 	 2.37 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 144.87 sec
+# Processed frames: 		 57
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 147.27 sec
+# Processed frames: 		 58
+# Frame processing delay: 	 2.40 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 149.72 sec
+# Processed frames: 		 59
+# Frame processing delay: 	 2.45 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 152.24 sec
+# Processed frames: 		 60
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 154.76 sec
+# Processed frames: 		 61
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 157.28 sec
+# Processed frames: 		 62
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 159.84 sec
+# Processed frames: 		 63
+# Frame processing delay: 	 2.56 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 162.34 sec
+# Processed frames: 		 64
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 164.83 sec
+# Processed frames: 		 65
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 167.32 sec
+# Processed frames: 		 66
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 169.83 sec
+# Processed frames: 		 67
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 172.28 sec
+# Processed frames: 		 68
+# Frame processing delay: 	 2.46 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 174.78 sec
+# Processed frames: 		 69
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 177.27 sec
+# Processed frames: 		 70
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 179.82 sec
+# Processed frames: 		 71
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 182.37 sec
+# Processed frames: 		 72
+# Frame processing delay: 	 2.56 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 184.87 sec
+# Processed frames: 		 73
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 187.39 sec
+# Processed frames: 		 74
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 189.94 sec
+# Processed frames: 		 75
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 192.38 sec
+# Processed frames: 		 76
+# Frame processing delay: 	 2.44 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 194.93 sec
+# Processed frames: 		 77
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 197.49 sec
+# Processed frames: 		 78
+# Frame processing delay: 	 2.56 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 200.01 sec
+# Processed frames: 		 79
+# Frame processing delay: 	 2.53 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 202.55 sec
+# Processed frames: 		 80
+# Frame processing delay: 	 2.54 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 205.07 sec
+# Processed frames: 		 81
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.53 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 208.00 sec
+# Processed frames: 		 82
+# Frame processing delay: 	 2.92 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 210.65 sec
+# Processed frames: 		 83
+# Frame processing delay: 	 2.66 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 213.29 sec
+# Processed frames: 		 84
+# Frame processing delay: 	 2.64 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 215.84 sec
+# Processed frames: 		 85
+# Frame processing delay: 	 2.55 sec
+# Average delay per frame: 	 2.54 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 219.17 sec
+# Processed frames: 		 86
+# Frame processing delay: 	 3.34 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 221.81 sec
+# Processed frames: 		 87
+# Frame processing delay: 	 2.64 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 224.37 sec
+# Processed frames: 		 88
+# Frame processing delay: 	 2.56 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 226.89 sec
+# Processed frames: 		 89
+# Frame processing delay: 	 2.52 sec
+# Average delay per frame: 	 2.55 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 231.09 sec
+# Processed frames: 		 90
+# Frame processing delay: 	 4.20 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 233.60 sec
+# Processed frames: 		 91
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 236.46 sec
+# Processed frames: 		 92
+# Frame processing delay: 	 2.86 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 239.47 sec
+# Processed frames: 		 93
+# Frame processing delay: 	 3.01 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 242.12 sec
+# Processed frames: 		 94
+# Frame processing delay: 	 2.65 sec
+# Average delay per frame: 	 2.58 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 244.61 sec
+# Processed frames: 		 95
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 247.19 sec
+# Processed frames: 		 96
+# Frame processing delay: 	 2.58 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 249.65 sec
+# Processed frames: 		 97
+# Frame processing delay: 	 2.45 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 252.22 sec
+# Processed frames: 		 98
+# Frame processing delay: 	 2.57 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 254.71 sec
+# Processed frames: 		 99
+# Frame processing delay: 	 2.49 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 257.22 sec
+# Processed frames: 		 100
+# Frame processing delay: 	 2.50 sec
+# Average delay per frame: 	 2.57 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 260.76 sec
+# Processed frames: 		 101
+# Frame processing delay: 	 3.54 sec
+# Average delay per frame: 	 2.58 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 263.37 sec
+# Processed frames: 		 102
+# Frame processing delay: 	 2.61 sec
+# Average delay per frame: 	 2.58 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 265.73 sec
+# Processed frames: 		 103
+# Frame processing delay: 	 2.36 sec
+# Average delay per frame: 	 2.58 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION PROGRESS -----------------#
+# Execution time: 		 268.24 sec
+# Processed frames: 		 104
+# Frame processing delay: 	 2.51 sec
+# Average delay per frame: 	 2.58 sec
+#--------------------------------------------------------#
+#----------------- DRONEVISION FINISHED -----------------#
+# Execution time: 		 274.05
+# Number of frames processed: 	 104
+# Average delay per frame: 	 2.64 sec
+# Output folder:
+# 	../WindTurbineInspection_data/samples_output/FINAL_TESTS/2016_02_11__17_05_20/right_camera/
+#--------------------------------------------------------#

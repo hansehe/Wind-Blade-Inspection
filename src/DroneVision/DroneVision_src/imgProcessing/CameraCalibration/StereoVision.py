@@ -5,6 +5,7 @@
  Repository: Master's Thesis - CV (Computer Vision
 '''
 import cv2
+import warnings
 import numpy as np
 from StereoCalibration import StereoCalibration
 from Settings.Exceptions import DroneVisionError
@@ -63,14 +64,19 @@ class StereoVision(StereoCalibration):
 		baseline_p 			= self.GetPixelBaseline()
 		baseline 			= self.GetBaseline()
 		for i in range(len(left_pts)):
-			disparity 		= left_pts[i].pt[0] - right_pts[i].pt[0]
-			world_z 		= f_z*baseline_p/disparity 		# Z_w = f_z*T/d
-			world_x 		= left_pts[i].pt[0]*world_z/f_x	# X_w/x_p = Z_w/f_x -> X_w = x_p*Z_w/f_x
-			world_y 		= left_pts[i].pt[1]*world_z/f_y	# Y_w/y_p = Z_w/f_y -> Y_w = y_p*Z_w/f_y
-			point3D 		= np.array([[world_x],[world_y],[world_z]])
-			point3D 		*= baseline/baseline_p # Transform from pixel units to metric (mm) units. Use the relation between baseline in pixels with baseline in metric units.
-			if point3D[2,0] >= 0: # Remove negative depth points (should be impossible)
-				points3D.append(point3D)
+			disparity = left_pts[i].pt[0] - right_pts[i].pt[0]
+			if disparity != 0.0:
+				world_z 		= f_z*baseline_p/disparity 		# Z_w = f_z*T/d
+				world_x 		= left_pts[i].pt[0]*world_z/f_x	# X_w/x_p = Z_w/f_x -> X_w = x_p*Z_w/f_x
+				world_y 		= left_pts[i].pt[1]*world_z/f_y	# Y_w/y_p = Z_w/f_y -> Y_w = y_p*Z_w/f_y
+				point3D 		= np.array([[world_x],[world_y],[world_z]])
+				point3D 		*= baseline/baseline_p # Transform from pixel units to metric (mm) units. Use the relation between baseline in pixels with baseline in metric units.
+				if point3D[2,0] >= 0: # Remove negative depth points (should be impossible)
+					points3D.append(point3D)
+			else:
+				warnings.simplefilter('always')
+				warnings.warn('Disparity equals ZERO, cannot reconstruct 3D point.', UserWarning)
+				warnings.simplefilter('default')
 		return points3D
 
 	def TriangulatePoints(self, left_keypoints, right_keypoints, matches, opencv_triangulation=True, iterative_HZ_triangulation=True):

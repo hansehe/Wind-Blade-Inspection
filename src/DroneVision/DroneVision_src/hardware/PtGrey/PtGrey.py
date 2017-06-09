@@ -56,6 +56,14 @@ class PtGrey(object):
 		'''
 		self.__ptgrey_class.RetrieveBufferThread()
 
+	def ToggleTriggerPin(self, toggle_delay=0.0):
+		'''
+		 @brief Toggle camera trigger pin to make camera capture frame
+
+		 @param toggle_delay (float)
+		'''
+		self.__ptgrey_class.ToggleTriggerPin(toggle_delay=toggle_delay)
+
 	def CaptureFrame(self, skip_pin_trig=False, skip_manual_trig=False):
 		'''
 		 @brief Capture image

@@ -30,14 +30,15 @@ class PointDetection(FeatureStereopsis):
 			settings_inst.GetSettings('CV', 'detector_type'), \
 			plot_figure=plot_figure)
 
-	def CalibratePointDetection(self, printInfo=False, force_calibration=False):
+	def CalibratePointDetection(self, printInfo=False, force_calibration=False, force_blob_calibration=False):
 		'''
 		 @brief Calibrate BlobDetector, FeatureStereopsis and StereoCalibration.
 
 		 @param printInfo (Print info during calibration (default=False))
 		 @param force_calibration (True/False for forcing new full calibration)
+		 @param force_blob_calibration (True/False)
 		'''
-		self.CalibrateFeatureStereopsis(printInfo=printInfo, force_calibration=force_calibration)
+		self.CalibrateFeatureStereopsis(printInfo=printInfo, force_calibration=force_calibration, force_blob_calibration=force_blob_calibration)
 
 	def GetBoundaryHoughLines(self, origin_frame, delta_frame, keypoints, filtrate_edge_points=True, use_min_blob_distance_threshold=True, draw=False, print_hough_positions=False):
 		'''
@@ -63,7 +64,7 @@ class PointDetection(FeatureStereopsis):
 		else:
 			radi_threshold = None
 			
-		hough_lines 									= HoughLinesPointMatrix(delta_frame, keypoints, radi_threshold=radi_threshold, radi_threshold_tuning_param=0.3)
+		hough_lines 									= HoughLinesPointMatrix(hough_frame, keypoints, radi_threshold=radi_threshold, radi_threshold_tuning_param=0.3)
 		hough_frame, bounded_lines, max_min_lines 		= FindLineLimits(hough_frame, hough_lines, keypoints, radi_threshold=radi_threshold, radi_threshold_tuning_param=0.5, draw_hough_matrix=draw, draw_bounded_lines=draw, draw_arrowed_bounded_lines=True)
 		edgel_map, boundary_hough_lines 				= DetectBoundaryEdges(origin_frame, bounded_lines, max_min_lines, filtrate_edge_points=filtrate_edge_points, draw=draw, print_hough_positions=print_hough_positions)
 

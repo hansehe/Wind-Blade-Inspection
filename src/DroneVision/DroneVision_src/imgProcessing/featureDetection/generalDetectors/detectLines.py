@@ -223,7 +223,7 @@ def DrawHoughLine(frame, hough_line, color):
 		y1 	= int(y0 + size*(a))
 		x2 	= int(x0 - size*(-b))
 		y2 	= int(y0 - size*(a))
-		cv2.line(frame, (x1,y1), (x2,y2), color, 3)
+		cv2.line(frame, (x1,y1), (x2,y2), color, 2)
 	return frame
 
 def DrawHoughLines(frame, hough_lines, color=(255,0,0)):
