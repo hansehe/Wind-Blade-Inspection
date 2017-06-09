@@ -51,19 +51,7 @@ The software is written in python 2.7, and depends on using two odroid-XU4, whic
 sudo python main.py info
 ```
 
-* Run the program with stored video sample:
-
-```
-sudo python main.py run simulate video
-```
-
-* Or use an image sample:
-
-```
-sudo python main.py run simulate image
-```
-
-* The master and slave is started by typing following in the master/slave terminal:
+* Run the program with master and slave in separate terminals by typing follow in the master/slave terminal:
 
 ```
 sudo python main.py run master
@@ -77,6 +65,13 @@ sudo python main.py run slave
 
 ```
 sudo python main.py run master calibrate
+```
+
+* Note that the repository comes with video and image samples, whereas the software is set demonstrate the software on a local computer using the image samples. 
+	- See 'SettingsConfigured.py' to change default settings, and type following to reset settings to default:
+
+```
+sudo python main.py reset_settings
 ```
 
 * NOTE: X11 enables desktop interface in real-time through ssh, which is accessed using MobaXterm on windows or from terminal on linux.
